@@ -1,0 +1,27 @@
+[
+    {
+        "company": "Sapphire Technologies",
+        "position": "Full Stack Developer Intern",
+        "duration": "2025 - Present",
+        "description": "Leading development of scalable web applications across the digital galaxy.",
+        "skills": [
+            "React",
+            "Node.js",
+            "MongoDB",
+            "Express.js",
+            "Git"
+        ]
+    },
+    {
+        "company": "Zhagaram Technologies",
+        "position": "Machine Learning Intern",
+        "duration": "March 2025 - April 2025",
+        "description": "Successfully completed a structured internship program in the Machine Learning domain, focusing on foundational and applied ML concepts.",
+        "skills": [
+            "Python",
+            "Machine Learning",
+            "Model Interpretation",
+            "Data Visualization and Understanding"
+        ]
+    }
+]

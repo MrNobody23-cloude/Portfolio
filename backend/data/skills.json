@@ -1,0 +1,86 @@
+[
+    {
+        "name": "React",
+        "level": 75,
+        "category": "frontend",
+        "icon": "Code2",
+        "color": "from-cyan-500 to-blue-500"
+    },
+    {
+        "name": "Node.js",
+        "level": 85,
+        "category": "backend",
+        "icon": "Database",
+        "color": "from-green-500 to-emerald-500"
+    },
+    {
+        "name": "JavaScript/TypeScript",
+        "level": 70,
+        "category": "frontend",
+        "icon": "Code2",
+        "color": "from-yellow-500 to-orange-500"
+    },
+    {
+        "name": "MongoDB",
+        "level": 88,
+        "category": "backend",
+        "icon": "Database",
+        "color": "from-green-600 to-green-400"
+    },
+    {
+        "name": "Express.js",
+        "level": 85,
+        "category": "backend",
+        "icon": "Database",
+        "color": "from-gray-600 to-gray-400"
+    },
+    {
+        "name": "REST APIs",
+        "level": 70,
+        "category": "backend",
+        "icon": "Globe",
+        "color": "from-purple-500 to-pink-500"
+    },
+    {
+        "name": "Git & GitHub",
+        "level": 80,
+        "category": "tools",
+        "icon": "Zap",
+        "color": "from-orange-500 to-red-500"
+    },
+    {
+        "name": "Problem Solving",
+        "level": 90,
+        "category": "other",
+        "icon": "Target",
+        "color": "from-purple-600 to-violet-500"
+    },
+    {
+        "name": "Team Leadership",
+        "level": 90,
+        "category": "other",
+        "icon": "Trophy",
+        "color": "from-amber-500 to-yellow-400"
+    },
+    {
+        "name": "Pandas",
+        "level": 75,
+        "category": "M.L.",
+        "icon": "Globe",
+        "color": "from-purple-500 to-pink-500"
+    },
+    {
+        "name": "Scikit-learn",
+        "level": 85,
+        "category": "M.L.",
+        "icon": "Zap",
+        "color": "from-purple-500 to-pink-500"
+    },
+    {
+        "name": "Matplotlib",
+        "level": 60,
+        "category": "M.L.",
+        "icon": "Code2",
+        "color": "from-purple-500 to-pink-500"
+    }
+]

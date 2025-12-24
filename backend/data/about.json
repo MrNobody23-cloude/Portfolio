@@ -1,0 +1,30 @@
+{
+    "personalInfo": {
+        "name": "Aaryan Patel",
+        "title": "Software Engineer",
+        "description": "I'm a Software Engineer navigating through the vast cosmos of technology. My mission is to build stellar applications that transcend dimensions.",
+        "experience": "Student"
+    },
+    "stats": {
+        "projects": 10,
+        "satisfaction": 100,
+        "experience": "Student"
+    },
+    "passions": [
+        {
+            "label": "Problem Solving",
+            "icon": "Brain",
+            "color": "text-purple-400"
+        },
+        {
+            "label": "Clean Code",
+            "icon": "Heart",
+            "color": "text-pink-400"
+        },
+        {
+            "label": "Continuous Learning",
+            "icon": "Coffee",
+            "color": "text-amber-400"
+        }
+    ]
+}
