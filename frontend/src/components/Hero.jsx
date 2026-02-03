@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Download, Github, Linkedin, Mail, Rocket, Sparkles, Wand2 } from 'lucide-react';
-import AaryanPatel_Resume23 from '../MyInfo/AaryanPatel_Resume23.pdf';
+import AaryanPatel_Resume from '../MyInfo/AaryanPatel_Resume.pdf';
 
 function Hero() {
   const heroRef = useRef(null);
@@ -102,7 +102,7 @@ function Hero() {
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </a>
-                <a href={AaryanPatel_Resume23} download className="px-8 py-4 bg-white/5 border border-white/10 rounded-xl font-semibold text-white backdrop-blur-sm hover:bg-white/10 transition-all flex items-center gap-2">
+                <a href={AaryanPatel_Resume} download className="px-8 py-4 bg-white/5 border border-white/10 rounded-xl font-semibold text-white backdrop-blur-sm hover:bg-white/10 transition-all flex items-center gap-2">
                   <Download className="w-5 h-5" />
                   Resume
                 </a>
