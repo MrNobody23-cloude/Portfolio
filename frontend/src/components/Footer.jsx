@@ -7,7 +7,7 @@ function Footer() {
   };
 
   return (
-    <footer className="section-dark py-16 relative overflow-hidden border-t border-purple-500/20">
+    <footer className="section-dark py-16 relative overflow-hidden border-t border-[#D4AF37]/20">
       {/* Starfield */}
       <div className="absolute inset-0 opacity-30">
         <div className="stars"></div>
@@ -35,9 +35,9 @@ function Footer() {
                 href="https://github.com/MrNobody23-cloude"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 space-card rounded-lg hover:scale-110 transition-all duration-300 border border-purple-500/20"
+                className="p-3 space-card rounded-lg hover:scale-110 transition-all duration-300 border border-[#D4AF37]/20"
               >
-                <Github className="w-5 h-5 text-purple-300" />
+                <Github className="w-5 h-5 text-[#D4AF37]" />
               </a>
               <a
                 href="https://www.linkedin.com/in/aaryan-patel-9869962a2/"
@@ -60,23 +60,23 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-6 text-lg">Navigation</h4>
             <ul className="space-y-3 text-gray-400">
-              <li><a href="#hero" className="hover:text-purple-300 transition-colors flex items-center group">
-                <span className="w-2 h-2 rounded-full bg-purple-500 mr-2 group-hover:animate-pulse"></span>
+              <li><a href="#hero" className="hover:text-[#D4AF37] transition-colors flex items-center group">
+                <span className="w-2 h-2 rounded-full bg-[#D4AF37] mr-2 group-hover:animate-pulse"></span>
                 Home
               </a></li>
-              <li><a href="#about" className="hover:text-purple-300 transition-colors flex items-center group">
+              <li><a href="#about" className="hover:text-[#D4AF37] transition-colors flex items-center group">
                 <span className="w-2 h-2 rounded-full bg-cyan-500 mr-2 group-hover:animate-pulse"></span>
                 About
               </a></li>
-              <li><a href="#skills" className="hover:text-purple-300 transition-colors flex items-center group">
+              <li><a href="#skills" className="hover:text-[#D4AF37] transition-colors flex items-center group">
                 <span className="w-2 h-2 rounded-full bg-pink-500 mr-2 group-hover:animate-pulse"></span>
                 Skills
               </a></li>
-              <li><a href="#projects" className="hover:text-purple-300 transition-colors flex items-center group">
+              <li><a href="#projects" className="hover:text-[#D4AF37] transition-colors flex items-center group">
                 <span className="w-2 h-2 rounded-full bg-blue-500 mr-2 group-hover:animate-pulse"></span>
                 Projects
               </a></li>
-              <li><a href="#contact" className="hover:text-purple-300 transition-colors flex items-center group">
+              <li><a href="#contact" className="hover:text-[#D4AF37] transition-colors flex items-center group">
                 <span className="w-2 h-2 rounded-full bg-green-500 mr-2 group-hover:animate-pulse"></span>
                 Contact
               </a></li>
@@ -89,22 +89,22 @@ function Footer() {
             <p className="text-gray-400 mb-4">
               Open to collaborations and new projects.
             </p>
-            <a href="mailto:aaryanpatel080@gmail.com" className="text-purple-400 hover:text-purple-300 transition-colors glow-purple">
+            <a href="mailto:aaryanpatel080@gmail.com" className="text-[#D4AF37] hover:text-[#F4C430] transition-colors glow-gold">
               aaryanpatel080@gmail.com
             </a>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-purple-500/20 flex flex-col md:flex-row justify-between items-center">
+        <div className="pt-8 border-t border-[#D4AF37]/20 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center">
             © {new Date().getFullYear()} Aaryan Patel. Crafted with <Heart className="w-4 h-4 inline text-pink-500 mx-1 animate-pulse" /> across the cosmos
           </p>
           <button
             onClick={scrollToTop}
-            className="p-4 space-card rounded-xl hover:scale-110 transition-all duration-300 group border border-purple-500/30 animate-pulse-glow"
+            className="p-4 space-card rounded-xl hover:scale-110 transition-all duration-300 group border border-[#D4AF37]/30 animate-pulse-glow"
           >
-            <ArrowUp className="w-5 h-5 text-purple-300 group-hover:-translate-y-1 transition-transform" />
+            <ArrowUp className="w-5 h-5 text-[#D4AF37] group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
       </div>

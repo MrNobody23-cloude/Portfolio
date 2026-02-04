@@ -112,7 +112,7 @@ function Experience() {
               >
                 {/* Timeline Line */}
                 {index !== experiences.length - 1 && (
-                  <div className={`absolute left-[15px] top-14 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-cyan-500 transition-all duration-1000 ${visibleExperiences.has(index) ? 'scale-y-100' : 'scale-y-0'
+                  <div className={`absolute left-[15px] top-14 bottom-0 w-0.5 bg-gradient-to-b from-[#D4AF37] to-cyan-500 transition-all duration-1000 ${visibleExperiences.has(index) ? 'scale-y-100' : 'scale-y-0'
                     }`} style={{ transformOrigin: 'top', transitionDelay: `${index * 200 + 300}ms` }}></div>
                 )}
 
@@ -121,19 +121,19 @@ function Experience() {
                   }`} style={{ transitionDelay: `${index * 200 + 100}ms` }}></div>
 
                 {/* Content Card */}
-                <div className="space-card p-8 hover-lift ml-6 border border-purple-500/20 relative overflow-hidden group">
+                <div className="space-card p-8 hover-lift ml-6 border border-[#D4AF37]/20 relative overflow-hidden group">
                   {/* Glowing Background */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-3xl group-hover:bg-purple-500/20 transition-all"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/10 blur-3xl group-hover:bg-[#D4AF37]/20 transition-all"></div>
 
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-5 relative z-10">
                     <div>
                       <h3 className="text-2xl text-white font-harry mb-2">{exp.position}</h3>
                       <div className="flex items-center mt-2 text-gray-300">
-                        <Building className="w-5 h-5 mr-2 text-purple-400" />
+                        <Building className="w-5 h-5 mr-2 text-[#D4AF37]" />
                         <span>{exp.company}</span>
                       </div>
                     </div>
-                    <div className="flex items-center text-sm text-gray-400 mt-3 md:mt-0 space-card px-4 py-2 rounded-lg border border-purple-500/20">
+                    <div className="flex items-center text-sm text-gray-400 mt-3 md:mt-0 space-card px-4 py-2 rounded-lg border border-[#D4AF37]/20">
                       <Calendar className="w-4 h-4 mr-2 text-cyan-400" />
                       {exp.duration}
                     </div>
@@ -145,7 +145,7 @@ function Experience() {
                     {exp.skills.map((skill, skillIndex) => (
                       <span
                         key={skillIndex}
-                        className="px-4 py-2 bg-purple-500/20 text-purple-300 text-sm rounded-full font-medium border border-purple-500/30 hover:bg-purple-500/30 transition-all"
+                        className="px-4 py-2 bg-[#D4AF37]/20 text-[#D4AF37] text-sm rounded-full font-medium border border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 transition-all"
                       >
                         {skill}
                       </span>

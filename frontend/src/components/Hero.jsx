@@ -152,7 +152,7 @@ function Hero() {
                   { name: 'MongoDB,SQL', stone: 'Space', color: 'bg-blue-500', angle: 60, dist: 220, icon: Wand2 },
                   { name: 'Python', stone: 'Mind', color: 'bg-yellow-400', angle: 120, dist: 220, icon: Sparkles },
                   { name: 'Java', stone: 'Soul', color: 'bg-orange-500', angle: 180, dist: 230, icon: Rocket },
-                  { name: 'DSA', stone: 'Power', color: 'bg-purple-500', angle: 240, dist: 220, icon: Wand2 }
+                  { name: 'DSA', stone: 'Power', color: 'bg-[#D4AF37]', angle: 240, dist: 220, icon: Wand2 }
                 ].map((shard, index) => {
                   const rad = (shard.angle * Math.PI) / 180;
                   const x = Math.cos(rad) * shard.dist;

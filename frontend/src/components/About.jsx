@@ -146,7 +146,7 @@ function About() {
   };
 
   const passions = [
-    { icon: Brain, label: "Problem Solving", color: "text-purple-400" },
+    { icon: Brain, label: "Problem Solving", color: "text-[#D4AF37]" },
     { icon: Heart, label: "Clean Code", color: "text-pink-400" },
     { icon: Coffee, label: "Continuous Learning", color: "text-amber-400" }
   ];
@@ -186,13 +186,13 @@ function About() {
             <span className="text-sm font-bold text-gradient-cosmic">ABOUT ME</span>
           </div>
           <h2 className="text-7xl md:text-8xl font-harry leading-tight">
-            Know <span className="text-gradient-cosmic glow-purple">Me</span>
+            Know <span className="text-gradient-cosmic glow-gold">Me</span>
           </h2>
           <div className="flex justify-center gap-2 mt-6">
             {[...Array(5)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"
+                className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"
                 style={{ animationDelay: `${i * 0.2}s` }}
               ></div>
             ))}
@@ -281,7 +281,7 @@ function About() {
               </h3>
 
               <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-                <p className="relative pl-6 before:content-['▸'] before:absolute before:left-0 before:text-purple-400 before:text-2xl">
+                <p className="relative pl-6 before:content-['▸'] before:absolute before:left-0 before:text-[#D4AF37] before:text-2xl">
                   I'm a Software Engineer navigating through the vast cosmos of technology. My mission is to build stellar applications that transcend dimensions.
                 </p>
                 <p className="relative pl-6 before:content-['▸'] before:absolute before:left-0 before:text-cyan-400 before:text-2xl">
@@ -295,7 +295,7 @@ function About() {
               {passions.map((passion, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 space-card border border-purple-500/30 px-5 py-3 rounded-full hover:scale-105 hover:border-purple-500/60 transition-all"
+                  className="flex items-center gap-3 space-card border border-[#D4AF37]/30 px-5 py-3 rounded-full hover:scale-105 hover:border-[#D4AF37]/60 transition-all"
                 >
                   <passion.icon className={`w-5 h-5 ${passion.color}`} />
                   <span className="text-sm font-medium text-gray-300">{passion.label}</span>
@@ -312,9 +312,9 @@ function About() {
         >
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/30 mb-6">
-              <Code2 className="w-4 h-4 text-purple-400 mr-2" />
-              <span className="text-sm font-medium text-purple-300">COMPETITIVE PROGRAMMING</span>
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#D4AF37]/20 to-cyan-500/20 border border-[#D4AF37]/30 mb-6">
+              <Code2 className="w-4 h-4 text-[#D4AF37] mr-2" />
+              <span className="text-sm font-medium text-[#D4AF37]">COMPETITIVE PROGRAMMING</span>
             </div>
             <h3 className="text-5xl font-harry">
               Coding <span className="text-gradient-cosmic">Profiles</span>
@@ -359,13 +359,13 @@ function About() {
                     style={{ transitionDelay: `${index * 200}ms` }}
                   >
                     {/* Glow Effect */}
-                    <div className={`absolute -inset-4 bg-gradient-to-br ${profile.gradient || 'from-purple-500 to-cyan-500'} rounded-3xl opacity-0 group-hover:opacity-40 blur-2xl transition-all duration-500`} />
+                    <div className={`absolute -inset-4 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37] to-cyan-500'} rounded-3xl opacity-0 group-hover:opacity-40 blur-2xl transition-all duration-500`} />
 
                     {/* Card */}
                     <div className="relative w-72 h-80 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl group-hover:border-white/40 group-hover:scale-105 transition-all duration-500 overflow-hidden">
 
                       {/* Animated Background Gradient */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${profile.gradient || 'from-purple-500/10 to-cyan-500/10'} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37]/10 to-cyan-500/10'} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                       {/* Shine Effect on Hover */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -375,7 +375,7 @@ function About() {
                       {/* DEFAULT VIEW - Profile Preview */}
                       <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 group-hover:opacity-0 group-hover:scale-95 group-hover:translate-y-4">
                         {/* Platform Icon */}
-                        <div className={`w-24 h-24 bg-gradient-to-br ${profile.gradient || 'from-purple-500 to-cyan-500'} rounded-2xl flex items-center justify-center mb-5 shadow-2xl transition-all duration-300`}>
+                        <div className={`w-24 h-24 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37] to-cyan-500'} rounded-2xl flex items-center justify-center mb-5 shadow-2xl transition-all duration-300`}>
                           <span className="text-5xl">{profile.emoji || '💻'}</span>
                         </div>
 
@@ -387,7 +387,7 @@ function About() {
 
                         {/* Hover Hint */}
                         <div className="flex items-center gap-2 text-gray-400 text-xs mt-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
                           <span>Hover to see stats</span>
                         </div>
                       </div>
@@ -396,7 +396,7 @@ function About() {
                       <div className="absolute inset-0 p-6 flex flex-col opacity-0 scale-95 -translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0">
                         {/* Compact Header */}
                         <div className="flex items-center gap-3 mb-4 pb-4 border-b border-white/10">
-                          <div className={`w-12 h-12 bg-gradient-to-br ${profile.gradient || 'from-purple-500 to-cyan-500'} rounded-xl flex items-center justify-center shadow-lg`}>
+                          <div className={`w-12 h-12 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37] to-cyan-500'} rounded-xl flex items-center justify-center shadow-lg`}>
                             <span className="text-2xl">{profile.emoji || '💻'}</span>
                           </div>
                           <div>
@@ -431,7 +431,7 @@ function About() {
 
                         {/* View Profile Link */}
                         <div className="pt-4 mt-auto text-center border-t border-white/10">
-                          <span className="inline-flex items-center text-sm text-purple-300 hover:text-white transition-colors">
+                          <span className="inline-flex items-center text-sm text-[#D4AF37] hover:text-white transition-colors">
                             View Full Profile
                             <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -452,7 +452,7 @@ function About() {
 
           {/* Ambient Background Effects */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
-            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-[#D4AF37]/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
             <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
           </div>
         </div>

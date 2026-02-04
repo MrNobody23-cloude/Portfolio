@@ -127,7 +127,7 @@ function Projects() {
             <span className="text-sm font-semibold text-gray-300">PORTFOLIO</span>
           </div>
           <h2 className="text-5xl md:text-6xl text-white mb-6 font-harry animate-fade-in-up stagger-1">
-            Featured <span className="text-gradient-cosmic glow-purple">Projects</span>
+            Featured <span className="text-gradient-cosmic glow-gold">Projects</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-white to-gray-600 mx-auto rounded-full animate-scale-in stagger-2"></div>
           <p className="text-lg text-gray-400 mt-6 max-w-2xl mx-auto animate-fade-in-up stagger-3">
@@ -138,7 +138,7 @@ function Projects() {
         {/* Loading State */}
         {loading && (
           <div className="text-center py-20">
-            <div className="inline-block w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="inline-block w-16 h-16 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
             <p className="text-gray-400 mt-4 text-lg">Loading projects...</p>
           </div>
         )}
@@ -168,7 +168,7 @@ function Projects() {
                   {/* Connecting Line */}
                   {index < projects.length - 1 && (
                     <div
-                      className={`absolute ${isEven ? 'right-0' : 'left-0'} top-full w-0.5 h-32 bg-gradient-to-b from-purple-500 to-transparent transition-all duration-1000 ${isVisible ? 'scale-y-100' : 'scale-y-0'
+                      className={`absolute ${isEven ? 'right-0' : 'left-0'} top-full w-0.5 h-32 bg-gradient-to-b from-[#D4AF37] to-transparent transition-all duration-1000 ${isVisible ? 'scale-y-100' : 'scale-y-0'
                         }`}
                       style={{ transformOrigin: 'top' }}
                     ></div>
@@ -186,10 +186,10 @@ function Projects() {
                       }}
                     >
                       {/* Hover Glow Effect */}
-                      <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute -inset-4 bg-gradient-to-r from-[#D4AF37]/20 to-cyan-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                       {/* Image Container with 3D Effect */}
-                      <div className="relative overflow-hidden rounded-2xl border-2 border-purple-500/30 group-hover:border-purple-500/60 transition-all duration-300 shadow-2xl">
+                      <div className="relative overflow-hidden rounded-2xl border-2 border-[#D4AF37]/30 group-hover:border-[#D4AF37]/60 transition-all duration-300 shadow-2xl">
                         <img
                           src={project.imageUrl}
                           alt={project.title}
@@ -197,7 +197,7 @@ function Projects() {
                         />
 
                         {/* Overlay on Hover */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27] via-purple-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27] via-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                         {/* Scan Line Effect */}
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-1000"></div>
@@ -215,10 +215,10 @@ function Projects() {
                           {project.tags.slice(0, 3).map((tag, i) => (
                             <div
                               key={i}
-                              className="w-10 h-10 space-card rounded-lg flex items-center justify-center border border-purple-500/30 opacity-0 group-hover:opacity-100 transition-all duration-300"
+                              className="w-10 h-10 space-card rounded-lg flex items-center justify-center border border-[#D4AF37]/30 opacity-0 group-hover:opacity-100 transition-all duration-300"
                               style={{ transitionDelay: `${i * 100}ms` }}
                             >
-                              <Cpu className="w-5 h-5 text-purple-400" />
+                              <Cpu className="w-5 h-5 text-[#D4AF37]" />
                             </div>
                           ))}
                         </div>
@@ -242,7 +242,7 @@ function Projects() {
                         <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-cosmic opacity-30">
                           {String(index + 1).padStart(2, '0')}
                         </div>
-                        <div className="flex-1 h-px bg-gradient-to-r from-purple-500 to-transparent"></div>
+                        <div className="flex-1 h-px bg-gradient-to-r from-[#D4AF37] to-transparent"></div>
                       </div>
 
                       {/* Title */}
@@ -260,7 +260,7 @@ function Projects() {
                         {project.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-4 py-2 bg-purple-500/20 text-purple-300 text-sm font-medium rounded-full border border-purple-500/40 hover:bg-purple-500/30 hover:scale-105 transition-all duration-200"
+                            className="px-4 py-2 bg-[#D4AF37]/10 text-[#D4AF37] text-sm font-medium rounded-full border border-[#D4AF37]/40 hover:bg-[#D4AF37]/20 hover:scale-105 transition-all duration-200"
                           >
                             {tag}
                           </span>

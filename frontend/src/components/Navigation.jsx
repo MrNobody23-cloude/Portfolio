@@ -76,7 +76,7 @@ function Navigation() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`group relative px-5 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 transform hover:scale-105 ${activeSection === item.id
-                    ? 'space-card border border-purple-500/50 text-white'
+                    ? 'space-card border border-[#D4AF37]/50 text-white'
                     : 'text-gray-300 hover:text-white hover:space-card border border-transparent'
                     }`}
                 >
@@ -96,7 +96,7 @@ function Navigation() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="relative text-gray-300 hover:text-white focus:outline-none p-3 rounded-xl hover:space-card transition-all duration-300 border border-purple-500/20"
+              className="relative text-gray-300 hover:text-white focus:outline-none p-3 rounded-xl hover:space-card transition-all duration-300 border border-[#D4AF37]/20"
             >
               <div className="relative z-10">
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,14 +108,14 @@ function Navigation() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden space-card border-t border-purple-500/30">
+        <div className="md:hidden space-card border-t border-[#D4AF37]/30">
           <div className="px-4 py-6 space-y-3">
             {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`group block w-full text-left px-5 py-4 rounded-xl text-base font-medium transition-all duration-300 transform hover:scale-105 hover:translate-x-2 ${activeSection === item.id
-                  ? 'space-card border border-purple-500/50 text-white'
+                  ? 'space-card border border-[#D4AF37]/50 text-white'
                   : 'text-gray-300 hover:text-white hover:space-card border border-transparent'
                   }`}
                 style={{ animationDelay: `${index * 100}ms` }}

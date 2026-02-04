@@ -63,7 +63,7 @@ function Contact() {
             <span className="text-sm font-semibold text-gray-300">GET IN TOUCH</span>
           </div>
           <h2 className="text-5xl md:text-6xl text-white mb-6 font-harry">
-            Contact <span className="text-gradient-cosmic glow-purple">Me</span>
+            Contact <span className="text-gradient-cosmic glow-gold">Me</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-white to-gray-600 mx-auto rounded-full"></div>
           <p className="text-lg text-gray-400 mt-6 max-w-2xl mx-auto">
@@ -76,9 +76,9 @@ function Contact() {
           <div className="md:col-span-2 space-y-6">
             <h3 className="text-3xl text-white mb-8 font-harry">Contact Channels</h3>
 
-            <a href="mailto:your.email@example.com" className="space-card p-5 flex items-center space-x-4 hover-lift group border border-purple-500/20">
-              <div className="w-14 h-14 space-card rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform border border-purple-500/30 animate-pulse-glow">
-                <Mail className="w-7 h-7 text-purple-400" />
+            <a href="mailto:your.email@example.com" className="space-card p-5 flex items-center space-x-4 hover-lift group border border-[#D4AF37]/20">
+              <div className="w-14 h-14 space-card rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform border border-[#D4AF37]/30 animate-pulse-glow">
+                <Mail className="w-7 h-7 text-[#D4AF37]" />
               </div>
               <div>
                 <div className="text-sm text-gray-400">Email</div>
@@ -109,12 +109,12 @@ function Contact() {
 
           {/* Contact Form */}
           <div className="md:col-span-3">
-            <form onSubmit={handleSubmit} className="space-card p-8 space-y-6 border border-purple-500/20 relative overflow-hidden">
+            <form onSubmit={handleSubmit} className="space-card p-8 space-y-6 border border-[#D4AF37]/20 relative overflow-hidden">
               {/* Glowing Background */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#D4AF37]/10 blur-3xl"></div>
 
               <div className="relative z-10">
-                <label htmlFor="name" className="block text-sm font-semibold text-purple-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-semibold text-[#D4AF37] mb-2">
                   Your Name
                 </label>
                 <input
@@ -130,7 +130,7 @@ function Contact() {
               </div>
 
               <div className="relative z-10">
-                <label htmlFor="email" className="block text-sm font-semibold text-purple-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-semibold text-[#D4AF37] mb-2">
                   Email Address
                 </label>
                 <input
@@ -146,7 +146,7 @@ function Contact() {
               </div>
 
               <div className="relative z-10">
-                <label htmlFor="message" className="block text-sm font-semibold text-purple-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold text-[#D4AF37] mb-2">
                   Message
                 </label>
                 <textarea
