@@ -1,26 +1,26 @@
 [
     {
         "id": 1,
-        "title": "Hackathon Winner",
-        "description": "Won 1st place in the National Coding Hackathon 2024 for building an AI-powered accessibility tool.",
-        "date": "2024",
+        "title": "Competative Programming",
+        "description": "Secured 2nd Runner-up Position in Clash Of Codes 2.0 on CSI",
+        "date": "7th September 2025",
         "certificateImage": "CSI_COC.jpg",
         "icon": "Trophy"
     },
     {
         "id": 2,
-        "title": "Open Source Contributor",
-        "description": "Recognized as top contributor for the Actix Web framework ecosystem.",
-        "date": "2023",
-        "certificateImage": "opensource_cert.jpg",
-        "icon": "Github"
+        "title": "Smart India Hackathon",
+        "description": "Participated in the Smart India Hackathon (Intra-College Round) held at Terna Engineering College, Navi Mumbai.",
+        "date": "2nd September 2024",
+        "certificateImage": "SIH2024Certificate.jpg",
+        "icon": "Trophy"
     },
     {
         "id": 3,
-        "title": "AWS Certified Developer",
-        "description": "Achieved Associate Developer certification demonstrating proficiency in cloud architecture.",
-        "date": "2023",
-        "certificateImage": "aws_cert.pdf",
-        "icon": "Cloud"
+        "title": "Bharatiya Antriksh Hackathon",
+        "description": "Successfully submitted the idea for the Bharatiya Antriksh Hackathon.",
+        "date": "2025",
+        "certificateImage": "ISRO-Certificate.jpg",
+        "icon": "Trophy"
     }
 ]

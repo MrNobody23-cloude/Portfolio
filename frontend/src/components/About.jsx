@@ -2,17 +2,26 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Code2, Server, Database, Rocket, Star, Zap, Award, Target, Sparkles, Brain, Heart, Coffee, Trophy, Github, Cloud, ExternalLink, X, Medal, Crown } from 'lucide-react';
 import AaryanImage from '../MyInfo/AaryanImage.jpg';
 
+// Import all certificate files from MyInfo directory
+const myInfoCertificates = import.meta.glob('../MyInfo/*.*', { eager: true });
+
 // Icon Map for Achievements
 const achievementIcons = {
   Trophy, Github, Cloud, Medal, Crown, Award, Star, Zap
 };
 
 
-// Helper to get certificate path from public folder
+// Helper to get certificate path
 function getCertificatePath(filename) {
   if (!filename) return '';
-  // Files in public/certificates are accessible at /certificates/filename
-  return `/certificates/${filename}`;
+
+  const foundKey = Object.keys(myInfoCertificates).find(key => key.endsWith(filename));
+
+  if (foundKey && myInfoCertificates[foundKey]) {
+    return myInfoCertificates[foundKey].default;
+  }
+
+  return '';
 }
 
 function About() {
@@ -27,7 +36,6 @@ function About() {
   const sectionRef = useRef(null);
   const elementsRef = useRef([]);
 
-  // Fetch profiles and about data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -486,13 +494,20 @@ function About() {
                         {achievement.description}
                       </p>
 
-                      <button
-                        onClick={() => setSelectedCertificate(achievement)}
-                        className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all text-sm font-medium text-gray-300 hover:text-white group-hover:shadow-[0_0_20px_rgba(234,179,8,0.1)]"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        View Certificate
-                      </button>
+                      {/* Only show View Certificate button if certificate exists */}
+                      {achievement.certificateImage ? (
+                        <button
+                          onClick={() => setSelectedCertificate(achievement)}
+                          className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all text-sm font-medium text-gray-300 hover:text-white group-hover:shadow-[0_0_20px_rgba(234,179,8,0.1)]"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          View Certificate
+                        </button>
+                      ) : (
+                        <div className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 text-sm font-medium text-gray-500">
+                          <span>Certificate Not Available</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
