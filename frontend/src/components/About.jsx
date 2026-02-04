@@ -1,6 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Code2, Server, Database, Rocket, Star, Zap, Award, Target, Sparkles, Brain, Heart, Coffee, Trophy, Github, Cloud, ExternalLink, X } from 'lucide-react';
+import { Code2, Server, Database, Rocket, Star, Zap, Award, Target, Sparkles, Brain, Heart, Coffee, Trophy, Github, Cloud, ExternalLink, X, Medal, Crown } from 'lucide-react';
 import AaryanImage from '../MyInfo/AaryanImage.jpg';
+
+// Icon Map for Achievements
+const achievementIcons = {
+  Trophy, Github, Cloud, Medal, Crown, Award, Star, Zap
+};
+
+
+// Helper to get certificate path from public folder
+function getCertificatePath(filename) {
+  if (!filename) return '';
+  // Files in public/certificates are accessible at /certificates/filename
+  return `/certificates/${filename}`;
+}
 
 function About() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -450,39 +463,40 @@ function About() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {achievements.map((achievement, idx) => (
-                <div
-                  key={achievement.id}
-                  className="group relative space-card p-6 border border-white/10 hover:border-yellow-500/40 rounded-2xl transition-all duration-300 hover:-translate-y-2"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+              {achievements.map((achievement, idx) => {
+                const IconComponent = achievementIcons[achievement.icon] || Trophy; // Dynamic Icon
 
-                  <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-yellow-500/30 transition-colors">
-                        {achievement.icon === 'Github' ? <Github className="w-6 h-6 text-white" /> :
-                          achievement.icon === 'Cloud' ? <Cloud className="w-6 h-6 text-white" /> :
-                            <Trophy className="w-6 h-6 text-yellow-400" />
-                        }
+                return (
+                  <div
+                    key={achievement.id}
+                    className="group relative space-card p-6 border border-white/10 hover:border-yellow-500/40 rounded-2xl transition-all duration-300 hover:-translate-y-2"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                    <div className="relative z-10">
+                      <div className="flex justify-between items-start mb-4">
+                        <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-yellow-500/30 transition-colors">
+                          <IconComponent className="w-6 h-6 text-yellow-400" />
+                        </div>
+                        <span className="text-xs text-gray-400 border border-white/10 px-2 py-1 rounded-full">{achievement.date}</span>
                       </div>
-                      <span className="text-xs text-gray-400 border border-white/10 px-2 py-1 rounded-full">{achievement.date}</span>
+
+                      <h4 className="text-xl font-bold text-white mb-2">{achievement.title}</h4>
+                      <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                        {achievement.description}
+                      </p>
+
+                      <button
+                        onClick={() => setSelectedCertificate(achievement)}
+                        className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all text-sm font-medium text-gray-300 hover:text-white group-hover:shadow-[0_0_20px_rgba(234,179,8,0.1)]"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        View Certificate
+                      </button>
                     </div>
-
-                    <h4 className="text-xl font-bold text-white mb-2">{achievement.title}</h4>
-                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                      {achievement.description}
-                    </p>
-
-                    <button
-                      onClick={() => setSelectedCertificate(achievement)}
-                      className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all text-sm font-medium text-gray-300 hover:text-white group-hover:shadow-[0_0_20px_rgba(234,179,8,0.1)]"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View Certificate
-                    </button>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -502,12 +516,25 @@ function About() {
                 <X className="w-6 h-6 text-gray-400 hover:text-white" />
               </button>
             </div>
-            <div className="p-1 bg-black/50">
-              <img
-                src={selectedCertificate.certificateImage}
-                alt={selectedCertificate.title}
-                className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
-              />
+            <div className="p-1 bg-black/50 h-[70vh] flex items-center justify-center">
+              {/* Handle PDF vs Image */}
+              {selectedCertificate.certificateImage && selectedCertificate.certificateImage.toLowerCase().endsWith('.pdf') ? (
+                <iframe
+                  src={getCertificatePath(selectedCertificate.certificateImage)}
+                  className="w-full h-full rounded-lg"
+                  title="Certificate Preview"
+                />
+              ) : (
+                <img
+                  src={getCertificatePath(selectedCertificate.certificateImage)}
+                  alt={selectedCertificate.title}
+                  className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://via.placeholder.com/800x600?text=Certificate+Not+Found";
+                  }}
+                />
+              )}
             </div>
             <div className="p-4 border-t border-white/10 bg-white/5 flex justify-end">
               <button

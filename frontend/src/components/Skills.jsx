@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code2, Database, Globe, Zap, Target, Trophy, Rocket, Terminal, Cpu, Layers } from 'lucide-react';
+import { Code2, Database, Globe, Zap, Target, Trophy, Rocket, Terminal, Cpu, Layers, Sparkles } from 'lucide-react';
 
 // Icon mapping for JSON data
 const iconMap = {
@@ -12,12 +12,11 @@ export default function Skills() {
   const [loading, setLoading] = useState(true);
 
   const categories = [
-    { id: "all", label: "All Skills" },
+    { id: "all", label: "Overview" },
     { id: "frontend", label: "Frontend" },
     { id: "backend", label: "Backend" },
-    { id: "tools", label: "Tools" },
-    { id: "M.L.", label: "AI/ML" },
-    { id: "other", label: "Core" }
+    { id: "tools", label: "DevOps" },
+    { id: "M.L.", label: "Intelligence" },
   ];
 
   useEffect(() => {
@@ -46,72 +45,81 @@ export default function Skills() {
     : skills.filter(s => s.category === activeCategory);
 
   return (
-    <section id="skills" className="py-20 section-space relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black pointer-events-none" />
+    <section id="skills" className="py-24 relative overflow-hidden bg-black">
+      {/* Subtle Background Mesh */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-purple-900/10 via-black to-black" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-harry mb-2">
-            Technical <span className="text-gradient-cosmic glow-purple">Arsenal</span>
-          </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto rounded-full" />
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-white/10 pb-8">
+          <div>
+            <div className="flex items-center gap-2 text-purple-400 mb-2">
+              <Sparkles className="w-4 h-4 animate-pulse" />
+              <span className="text-xs font-mono tracking-widest uppercase">Expertise</span>
+            </div>
+            <h2 className="text-5xl font-harry text-white leading-none">
+              Technical Mastery
+            </h2>
+          </div>
+
+          {/* Compact Filter Tabs */}
+          <div className="flex flex-wrap gap-1 bg-white/5 p-1 rounded-full border border-white/5 backdrop-blur-sm">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300
+                    ${activeCategory === cat.id
+                    ? "bg-white text-black shadow-lg shadow-white/10"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"}`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Compact Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border border-transparent
-                  ${activeCategory === cat.id
-                  ? "bg-white/10 text-white border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
-                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-gray-200"}`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Skills Grid - Simple & Interactive */}
+        {/* Compact Grid */}
         {loading ? (
-          <div className="flex justify-center py-20">
-            <div className="w-10 h-10 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          <div className="flex justify-center py-12">
+            <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredSkills.map((skill, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white/5 hover:bg-white/10 border border-white/5 hover:border-purple-500/30 rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                className="group relative flex items-center gap-4 p-3 pr-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all duration-300 overflow-hidden"
               >
-                {/* Hover Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                {/* Hover Glow Background */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
-                <div className="relative z-10 flex flex-col h-full">
-                  {/* Header: Icon & Name */}
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`p-1.5 rounded-lg bg-gradient-to-br ${skill.color} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}>
-                      <skill.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <span className="font-semibold text-gray-200 text-sm leading-tight h-10 flex items-center">{skill.name}</span>
+                {/* Icon Box */}
+                <div className="relative shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-black border border-white/10 group-hover:border-white/20 transition-colors shadow-lg">
+                  <skill.icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-transform duration-300 group-hover:scale-110" />
+                </div>
+
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex justify-between items-center mb-1">
+                    <h3 className="text-white font-medium truncate group-hover:text-purple-200 transition-colors">{skill.name}</h3>
+                    <span className="text-xs font-mono text-gray-500 group-hover:text-white transition-colors">{skill.level}%</span>
                   </div>
 
-                  {/* Progress Indicator */}
-                  <div className="mt-auto">
-                    <div className="flex justify-between text-[10px] text-gray-500 mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-                      <span>Proficiency</span>
-                      <span>{skill.level}%</span>
-                    </div>
-                    <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full bg-gradient-to-r ${skill.color}`}
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
+                  {/* Micro Progress Bar */}
+                  <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-purple-500 shadow-[0_0_10px_#a855f7]"
+                      style={{ width: `${skill.level}%` }}
+                    />
                   </div>
+                </div>
+
+                {/* Subtle Arrow Indicator on Hover */}
+                <div className="absolute right-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  {/* <Zap className="w-3 h-3 text-white/50" /> */}
                 </div>
               </div>
             ))}
