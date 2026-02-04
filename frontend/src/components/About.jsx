@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Code2, Server, Database, Rocket, Star, Zap, Award, Target, Sparkles, Brain, Heart, Coffee } from 'lucide-react';
+import { Code2, Server, Database, Rocket, Star, Zap, Award, Target, Sparkles, Brain, Heart, Coffee, Trophy, Github, Cloud, ExternalLink, X } from 'lucide-react';
 import AaryanImage from '../MyInfo/AaryanImage.jpg';
 
 function About() {
@@ -7,7 +7,9 @@ function About() {
   const [visibleElements, setVisibleElements] = useState(new Set());
   const [counters, setCounters] = useState({ projects: 0, satisfaction: 0, experience: 0 });
   const [codingProfiles, setCodingProfiles] = useState([]);
+  const [achievements, setAchievements] = useState([]);
   const [aboutData, setAboutData] = useState(null);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
   const [loading, setLoading] = useState(true);
   const sectionRef = useRef(null);
   const elementsRef = useRef([]);
@@ -17,18 +19,21 @@ function About() {
     const fetchData = async () => {
       try {
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const [profilesRes, aboutRes] = await Promise.all([
+        const [profilesRes, aboutRes, achievementsRes] = await Promise.all([
           fetch(`${API_URL}/api/profiles`),
-          fetch(`${API_URL}/api/about`)
+          fetch(`${API_URL}/api/about`),
+          fetch(`${API_URL}/api/achievements`)
         ]);
 
-        if (!profilesRes.ok || !aboutRes.ok) throw new Error('Failed to fetch data');
+        if (!profilesRes.ok || !aboutRes.ok || !achievementsRes.ok) throw new Error('Failed to fetch data');
 
         const profilesData = await profilesRes.json();
         const aboutInfo = await aboutRes.json();
+        const achievementsData = await achievementsRes.json();
 
         setCodingProfiles(profilesData);
         setAboutData(aboutInfo);
+        setAchievements(achievementsData);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -431,8 +436,90 @@ function About() {
           </div>
         </div>
 
+        {/* Achievements Section */}
+        {achievements.length > 0 && (
+          <div className="mb-24 relative">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 mb-6">
+                <Trophy className="w-4 h-4 text-yellow-400 mr-2" />
+                <span className="text-sm font-medium text-yellow-300">HALL OF FAME</span>
+              </div>
+              <h3 className="text-5xl font-harry">
+                My <span className="text-gradient-nebula glow-cyan">Achievements</span>
+              </h3>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {achievements.map((achievement, idx) => (
+                <div
+                  key={achievement.id}
+                  className="group relative space-card p-6 border border-white/10 hover:border-yellow-500/40 rounded-2xl transition-all duration-300 hover:-translate-y-2"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-yellow-500/30 transition-colors">
+                        {achievement.icon === 'Github' ? <Github className="w-6 h-6 text-white" /> :
+                          achievement.icon === 'Cloud' ? <Cloud className="w-6 h-6 text-white" /> :
+                            <Trophy className="w-6 h-6 text-yellow-400" />
+                        }
+                      </div>
+                      <span className="text-xs text-gray-400 border border-white/10 px-2 py-1 rounded-full">{achievement.date}</span>
+                    </div>
+
+                    <h4 className="text-xl font-bold text-white mb-2">{achievement.title}</h4>
+                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                      {achievement.description}
+                    </p>
+
+                    <button
+                      onClick={() => setSelectedCertificate(achievement)}
+                      className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all text-sm font-medium text-gray-300 hover:text-white group-hover:shadow-[0_0_20px_rgba(234,179,8,0.1)]"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      View Certificate
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
       </div>
+
+      {/* Certificate Modal */}
+      {selectedCertificate && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in-up">
+          <div className="relative max-w-4xl w-full bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="flex justify-between items-center p-4 border-b border-white/10 bg-white/5">
+              <h3 className="text-xl font-bold text-white max-w-[80%] truncate">{selectedCertificate.title}</h3>
+              <button
+                onClick={() => setSelectedCertificate(null)}
+                className="p-2 rounded-full hover:bg-white/10 transition-colors"
+              >
+                <X className="w-6 h-6 text-gray-400 hover:text-white" />
+              </button>
+            </div>
+            <div className="p-1 bg-black/50">
+              <img
+                src={selectedCertificate.certificateImage}
+                alt={selectedCertificate.title}
+                className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+              />
+            </div>
+            <div className="p-4 border-t border-white/10 bg-white/5 flex justify-end">
+              <button
+                onClick={() => setSelectedCertificate(null)}
+                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

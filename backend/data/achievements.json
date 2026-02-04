@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Hackathon Winner",
+        "description": "First place in the National CodeFest 2025 for innovation in AI.",
+        "date": "2025-11-15",
+        "certificateImage": "https://dummyimage.com/600x400/000/fff&text=Certificate+1",
+        "icon": "Trophy"
+    },
+    {
+        "id": 2,
+        "title": "Open Source Contributor",
+        "description": "Recognized for significant contributions to the React ecosystem.",
+        "date": "2025-08-20",
+        "certificateImage": "https://dummyimage.com/600x400/000/fff&text=Certificate+2",
+        "icon": "Github"
+    },
+    {
+        "id": 3,
+        "title": "Cloud Certification",
+        "description": "Achieved AWS Certified Solutions Architect - Associate status.",
+        "date": "2025-05-10",
+        "certificateImage": "https://dummyimage.com/600x400/000/fff&text=Certificate+3",
+        "icon": "Cloud"
+    }
+]

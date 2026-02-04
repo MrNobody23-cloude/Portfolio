@@ -40,6 +40,16 @@ router.get('/experience', (req, res) => {
     }
 });
 
+// GET /api/achievements - Get achievements
+router.get('/achievements', (req, res) => {
+    try {
+        const achievements = readJSONFile('achievements.json');
+        res.json(achievements);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch achievements' });
+    }
+});
+
 // GET /api/profiles - Get coding profiles with live stats
 router.get('/profiles', async (req, res) => {
     try {
