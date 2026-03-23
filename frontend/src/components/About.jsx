@@ -472,7 +472,7 @@ function About() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {achievements.map((achievement, idx) => {
-                const IconComponent = achievementIcons[achievement.icon] || Trophy; // Dynamic Icon
+                const IconComponent = achievementIcons[achievement.icon] || Trophy;
 
                 return (
                   <div

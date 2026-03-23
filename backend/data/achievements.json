@@ -22,5 +22,13 @@
         "date": "2025",
         "certificateImage": "ISRO-Certificate.png",
         "icon": "Trophy"
+    },
+    {
+        "id": 4,
+        "title": "Hackovium Hackathon",
+        "description": "Thrilled to have participated in Hackovium Hackathon and further sharpened my coding skills.",
+        "date": "2026",
+        "certificateImage": "Aaryan Patel_certificate.png",
+        "icon": "Trophy"
     }
 ]
