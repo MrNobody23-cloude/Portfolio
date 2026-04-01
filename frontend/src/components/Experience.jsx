@@ -59,105 +59,117 @@ function Experience() {
   }, [experiences]); // Add experiences as dependency
 
   return (
-    <section id="experience" className="py-24 section-space relative overflow-hidden">
-      {/* Starfield */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="stars"></div>
-        <div className="stars stars-layer-2"></div>
-      </div>
-
-      {/* Subtle Ambient Light */}
-      <div className="absolute top-20 right-10 w-24 h-24 rounded-full bg-white/[0.02] blur-2xl"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-5 py-2 rounded-full space-card border border-white/20 mb-4 animate-fade-in-up">
-            <span className="text-sm font-semibold text-gray-300">EXPERIENCE</span>
+    <section id="experience" className="py-32 relative overflow-hidden bg-transparent">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        
+        {/* Header - The Chronology of Eons */}
+        <div className="text-center mb-32">
+          <div className="inline-flex items-center px-6 py-2 rounded-full glass-panel border-[#D4AF37]/20 mb-8">
+            <Calendar className="w-4 h-4 text-[#D4AF37] mr-3" />
+            <span className="text-xs font-bold tracking-[0.4em] text-[#d0c5af] uppercase font-cinzel">The Chronology of Eons</span>
           </div>
-          <h2 className="text-5xl md:text-6xl text-white mb-6 font-harry animate-fade-in-up stagger-1">
-            Work <span className="text-gradient-nebula glow-cyan">Timeline</span>
+          <h2 className="text-6xl md:text-7xl text-white mb-8 font-cinzel tracking-tight leading-none">
+            Journey Through <span className="text-reveal glow-gold">Space-Time</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-white to-gray-600 mx-auto rounded-full animate-scale-in stagger-2"></div>
+          <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto"></div>
+          <p className="text-xl text-[#99907c] mt-10 max-w-2xl mx-auto font-serif italic">
+            "A scroll of past manifestations, documented in the great archive of professional excellence."
+          </p>
         </div>
 
         {/* Loading State */}
         {loading && (
           <div className="text-center py-20">
-            <div className="inline-block w-16 h-16 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-gray-400 mt-4 text-lg">Loading experience...</p>
+            <div className="inline-block w-20 h-20 border-2 border-[#D4AF37]/20 border-t-[#D4AF37] rounded-full animate-spin mb-8"></div>
+            <p className="text-[#D4AF37] font-harry text-2xl tracking-widest animate-pulse">Reading the Scrolls...</p>
           </div>
         )}
 
         {/* Error State */}
         {error && (
-          <div className="text-center py-20">
-            <p className="text-red-400 text-lg">Error: {error}</p>
-            <p className="text-gray-500 mt-2">Please check if the backend server is running on port 5000</p>
+          <div className="text-center py-20 px-8 glass-panel rounded-3xl border-[#740001]/30">
+            <p className="text-[#AE0001] text-xl font-bold font-cinzel">The Timeline is Shattered</p>
+            <p className="text-[#99907c] mt-4 font-serif italic">{error}</p>
           </div>
         )}
 
-        {/* Timeline */}
+        {/* Timeline - The Celestial Path */}
         {!loading && !error && experiences.length > 0 && (
-          <div className="max-w-4xl mx-auto">
-            {experiences.map((exp, index) => (
-              <div
-                key={index}
-                ref={el => experienceRefs.current[index] = el}
-                className={`relative pl-10 pb-16 last:pb-0 transition-all duration-700 ${visibleExperiences.has(index)
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 -translate-x-10'
-                  }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                {/* Timeline Line */}
-                {index !== experiences.length - 1 && (
-                  <div className={`absolute left-[15px] top-14 bottom-0 w-0.5 bg-gradient-to-b from-[#D4AF37] to-cyan-500 transition-all duration-1000 ${visibleExperiences.has(index) ? 'scale-y-100' : 'scale-y-0'
-                    }`} style={{ transformOrigin: 'top', transitionDelay: `${index * 200 + 300}ms` }}></div>
-                )}
+          <div className="max-w-5xl mx-auto relative">
+            {/* Main Path Line */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent transform -translate-x-1/2 hidden md:block"></div>
 
-                {/* Timeline Dot */}
-                <div className={`absolute left-0 top-2 w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 border-4 border-black shadow-lg z-10 transition-all duration-500 ${visibleExperiences.has(index) ? 'scale-100' : 'scale-0'
-                  }`} style={{ transitionDelay: `${index * 200 + 100}ms` }}></div>
+            {experiences.map((exp, index) => {
+              const isEven = index % 2 === 0;
+              const isVisible = visibleExperiences.has(index);
 
-                {/* Content Card */}
-                <div className="space-card p-8 hover-lift ml-6 border border-[#D4AF37]/20 relative overflow-hidden group">
-                  {/* Glowing Background */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/10 blur-3xl group-hover:bg-[#D4AF37]/20 transition-all"></div>
+              return (
+                <div
+                  key={index}
+                  ref={el => experienceRefs.current[index] = el}
+                  className={`relative mb-32 last:mb-0 md:mb-40 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+                    }`}
+                >
+                  <div className={`flex flex-col md:flex-row items-center gap-12 md:gap-0 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+                    {/* Content Section */}
+                    <div className="w-full md:w-[45%]">
+                      <div className="archive-card p-10 rounded-[2.5rem] border-white/5 hover:border-[#D4AF37]/40 transition-all duration-700 box-glow-gold group">
+                        
+                        {/* Meta Info */}
+                        <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 glass-panel-heavy rounded-xl flex items-center justify-center border-[#D4AF37]/20">
+                              <Building className="w-5 h-5 text-[#D4AF37]" />
+                            </div>
+                            <span className="text-[10px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel">{exp.company}</span>
+                          </div>
+                          <span className="text-[10px] font-bold text-[#99907c] tracking-[0.2em] uppercase font-cinzel group-hover:text-[#D4AF37] transition-colors">{exp.duration}</span>
+                        </div>
 
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-5 relative z-10">
-                    <div>
-                      <h3 className="text-2xl text-white font-harry mb-2">{exp.position}</h3>
-                      <div className="flex items-center mt-2 text-gray-300">
-                        <Building className="w-5 h-5 mr-2 text-[#D4AF37]" />
-                        <span>{exp.company}</span>
+                        {/* Title Section */}
+                        <div className="space-y-4 mb-8">
+                          <h3 className="text-3xl text-white font-cinzel leading-tight tracking-tight">{exp.position}</h3>
+                          <p className="text-base text-[#99907c] leading-relaxed font-serif italic border-l border-[#D4AF37]/20 pl-6">
+                            {exp.description}
+                          </p>
+                        </div>
+
+                        {/* Skills/Tools Cluster */}
+                        <div className="flex flex-wrap gap-2.5">
+                          {exp.skills.map((skill, skillIndex) => (
+                            <span
+                              key={skillIndex}
+                              className="px-4 py-2 glass-panel text-[9px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel rounded-full border-white/5 hover:border-[#D4AF37]/40 transition-all hover:text-[#D4AF37]"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-center text-sm text-gray-400 mt-3 md:mt-0 space-card px-4 py-2 rounded-lg border border-[#D4AF37]/20">
-                      <Calendar className="w-4 h-4 mr-2 text-cyan-400" />
-                      {exp.duration}
+
+                    {/* Timeline Node - The Singularity */}
+                    <div className="absolute left-0 md:left-1/2 top-10 md:top-1/2 w-10 h-10 transform -translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center z-10 transition-all duration-700">
+                      <div className="w-4 h-4 rounded-full bg-[#D4AF37] shadow-[0_0_20px_#D4AF37] group-hover:scale-150 transition-transform"></div>
+                      <div className="absolute inset-0 rounded-full border border-[#D4AF37]/30 animate-ping opacity-20"></div>
+                      <div className="absolute -inset-4 rounded-full border border-white/5"></div>
+                    </div>
+
+                    {/* Space for the other side */}
+                    <div className="hidden md:block md:w-[45%] p-10">
+                      <div className={`text-[120px] font-harry text-[#D4AF37]/5 tracking-tighter transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+                        {String(index + 1).padStart(2, '0')}
+                      </div>
                     </div>
                   </div>
-
-                  <p className="text-gray-300 mb-6 relative z-10">{exp.description}</p>
-
-                  <div className="flex flex-wrap gap-2 relative z-10">
-                    {exp.skills.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="px-4 py-2 bg-[#D4AF37]/20 text-[#D4AF37] text-sm rounded-full font-medium border border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 transition-all"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
     </section>
+
   );
 }
 

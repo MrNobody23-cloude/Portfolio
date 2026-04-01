@@ -7,108 +7,101 @@ function Footer() {
   };
 
   return (
-    <footer className="section-dark py-16 relative overflow-hidden border-t border-[#D4AF37]/20">
-      {/* Starfield */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="stars"></div>
-      </div>
 
-      {/* Subtle Ambient Light */}
-      <div className="absolute top-10 right-20 w-20 h-20 rounded-full bg-white/[0.02] blur-2xl"></div>
-      <div className="absolute bottom-10 left-20 w-16 h-16 rounded-full bg-white/[0.015] blur-2xl"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-3 gap-10 mb-12">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center border border-white/20">
-                <Rocket className="w-5 h-5 text-white/80" />
+    <footer className="relative py-24 overflow-hidden bg-transparent border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        <div className="grid md:grid-cols-4 gap-16 mb-20">
+          
+          {/* Brand - The Archivist Label */}
+          <div className="md:col-span-2 space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 glass-panel-heavy rounded-2xl flex items-center justify-center border-[#D4AF37]/20 box-glow-gold">
+                <Rocket className="w-6 h-6 text-[#D4AF37]" />
               </div>
-              <h3 className="text-2xl text-white font-harry">Aaryan Patel</h3>
+              <div>
+                <h3 className="text-3xl text-white font-cinzel leading-none tracking-tighter">Aaryan <span className="text-[#D4AF37]">Patel</span></h3>
+                <p className="text-[10px] font-bold text-[#99907c] tracking-[0.4em] uppercase font-cinzel mt-2">Celestial Archivist</p>
+              </div>
             </div>
-            <p className="text-gray-400 mb-6">
-              Full Stack Developer exploring the infinite possibilities of the digital cosmos.
+            <p className="text-lg text-[#99907c] font-serif italic max-w-md leading-relaxed">
+              "Mapping the infinite constellations of the digital void, one manifestation at a time. The archive remains eternal."
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/MrNobody23-cloude"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 space-card rounded-lg hover:scale-110 transition-all duration-300 border border-[#D4AF37]/20"
-              >
-                <Github className="w-5 h-5 text-[#D4AF37]" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/aaryan-patel-9869962a2/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 space-card rounded-lg hover:scale-110 transition-all duration-300 border border-cyan-500/20"
-              >
-                <Linkedin className="w-5 h-5 text-cyan-300" />
-              </a>
-              <a
-                href="mailto:aaryanpatel080@gmail.com"
-                className="p-3 space-card rounded-lg hover:scale-110 transition-all duration-300 border border-pink-500/20"
-              >
-                <Mail className="w-5 h-5 text-pink-300" />
-              </a>
+            <div className="flex gap-4">
+              {[
+                { icon: Github, href: "https://github.com/MrNobody23-cloude", color: "white" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/aaryan-patel-9869962a2/", color: "gold" },
+                { icon: Mail, href: "mailto:aaryanpatel080@gmail.com", color: "red" }
+              ].map((social, i) => (
+                <a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 glass-panel rounded-xl flex items-center justify-center border-white/5 hover:border-[#D4AF37]/40 transition-all duration-500 hover:-translate-y-1 hover:box-glow-gold group"
+                >
+                  <social.icon className="w-5 h-5 text-[#d0c5af] group-hover:text-[#D4AF37] transition-colors" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-white mb-6 text-lg">Navigation</h4>
-            <ul className="space-y-3 text-gray-400">
-              <li><a href="#hero" className="hover:text-[#D4AF37] transition-colors flex items-center group">
-                <span className="w-2 h-2 rounded-full bg-[#D4AF37] mr-2 group-hover:animate-pulse"></span>
-                Home
-              </a></li>
-              <li><a href="#about" className="hover:text-[#D4AF37] transition-colors flex items-center group">
-                <span className="w-2 h-2 rounded-full bg-cyan-500 mr-2 group-hover:animate-pulse"></span>
-                About
-              </a></li>
-              <li><a href="#skills" className="hover:text-[#D4AF37] transition-colors flex items-center group">
-                <span className="w-2 h-2 rounded-full bg-pink-500 mr-2 group-hover:animate-pulse"></span>
-                Skills
-              </a></li>
-              <li><a href="#projects" className="hover:text-[#D4AF37] transition-colors flex items-center group">
-                <span className="w-2 h-2 rounded-full bg-blue-500 mr-2 group-hover:animate-pulse"></span>
-                Projects
-              </a></li>
-              <li><a href="#contact" className="hover:text-[#D4AF37] transition-colors flex items-center group">
-                <span className="w-2 h-2 rounded-full bg-green-500 mr-2 group-hover:animate-pulse"></span>
-                Contact
-              </a></li>
+          {/* Navigation - The Gilded Pathways */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-bold text-[#D4AF37] tracking-[0.4em] uppercase font-cinzel">Pathways</h4>
+            <ul className="space-y-4">
+              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href={`#${item.toLowerCase()}`} 
+                    className="text-[#99907c] hover:text-[#D4AF37] transition-all duration-500 font-cinzel text-sm tracking-widest flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-4 h-[1px] bg-[#D4AF37] mr-0 group-hover:mr-3 transition-all duration-500"></span>
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold text-white mb-6 text-lg">Contact</h4>
-            <p className="text-gray-400 mb-4">
-              Open to collaborations and new projects.
+          {/* Direct Pulse - The Quick Reach */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-bold text-[#D4AF37] tracking-[0.4em] uppercase font-cinzel">Quick Reach</h4>
+            <p className="text-[#99907c] font-serif italic leading-relaxed">
+              Open to cosmic collaborations and architectural explorations.
             </p>
-            <a href="mailto:aaryanpatel080@gmail.com" className="text-[#D4AF37] hover:text-[#F4C430] transition-colors glow-gold">
+            <a 
+              href="mailto:aaryanpatel080@gmail.com" 
+              className="block text-white font-cinzel tracking-widest hover:text-[#D4AF37] transition-colors overflow-hidden text-ellipsis"
+            >
               aaryanpatel080@gmail.com
             </a>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#D4AF37]/20 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center">
-            © {new Date().getFullYear()} Aaryan Patel. Crafted with <Heart className="w-4 h-4 inline text-pink-500 mx-1 animate-pulse" /> across the cosmos
+        {/* Bottom Bar - The Final Seal */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[10px] font-bold text-[#666] tracking-[0.3em] uppercase font-cinzel flex items-center">
+            © {new Date().getFullYear()} <span className="text-[#D4AF37] mx-2">Aaryan Patel</span> • Sealed with <Heart className="w-3 h-3 text-[#740001] mx-2 animate-pulse" /> across the eons
           </p>
+          
           <button
             onClick={scrollToTop}
-            className="p-4 space-card rounded-xl hover:scale-110 transition-all duration-300 group border border-[#D4AF37]/30 animate-pulse-glow"
+            className="group relative flex flex-col items-center gap-3"
           >
-            <ArrowUp className="w-5 h-5 text-[#D4AF37] group-hover:-translate-y-1 transition-transform" />
+            <div className="w-14 h-14 glass-panel-heavy rounded-full flex items-center justify-center border-[#D4AF37]/20 group-hover:border-[#D4AF37] transition-all duration-700 box-glow-gold hover:scale-110">
+              <ArrowUp className="w-5 h-5 text-[#D4AF37] group-hover:-translate-y-1 transition-transform" />
+            </div>
+            <span className="text-[8px] font-bold text-[#99907c] tracking-[0.4em] uppercase font-cinzel opacity-0 group-hover:opacity-100 transition-opacity">Return to Origin</span>
           </button>
         </div>
       </div>
+      
+      {/* Decorative Final Rune */}
+      <div className="absolute -bottom-20 -right-20 text-[300px] font-harry text-[#D4AF37]/5 pointer-events-none select-none rotate-12">
+        Fin
+      </div>
     </footer>
+
   );
 }
 

@@ -152,202 +152,132 @@ function About() {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-32 section-dark relative overflow-hidden">
-      {/* Subtle Dark Mesh Gradient Background */}
+    <section id="about" ref={sectionRef} className="py-32 relative overflow-hidden bg-transparent">
+      {/* Celestial Background Layers */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-30"
         style={{
-          background: `radial-gradient(circle at ${50 + scrollProgress * 30}% ${50 - scrollProgress * 20}%, rgba(255,255,255,0.03) 0%, transparent 50%)`,
-          transform: `scale(${1 + scrollProgress * 0.1})`
+          background: `radial-gradient(circle at ${50 + scrollProgress * 20}% ${50 - scrollProgress * 10}%, rgba(212, 175, 55, 0.05) 0%, transparent 60%)`,
         }}
       ></div>
 
-      {/* Subtle Ambient Light with Parallax */}
-      <div
-        className="absolute top-20 right-10 w-72 h-72 rounded-full bg-white/[0.02] blur-3xl"
-        style={{ transform: `translateY(${scrollProgress * 100}px) translateX(${scrollProgress * -50}px)` }}
-      ></div>
-      <div
-        className="absolute bottom-40 left-10 w-96 h-96 rounded-full bg-white/[0.015] blur-3xl"
-        style={{ transform: `translateY(${scrollProgress * -80}px) translateX(${scrollProgress * 40}px)` }}
-      ></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Animated Header */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        {/* Animated Header - The Archivist's Intro */}
         <div
-          className="text-center mb-20"
+          className="text-center mb-32"
           style={{
             opacity: Math.max(0, 1 - scrollProgress * 2),
-            transform: `translateY(${scrollProgress * -50}px) scale(${1 - scrollProgress * 0.1})`
+            transform: `translateY(${scrollProgress * -50}px)`
           }}
         >
-          <div className="inline-flex items-center px-6 py-3 rounded-full space-card border border-white/20 mb-6 backdrop-blur-sm">
-            <Sparkles className="w-5 h-5 text-white/60 mr-2" />
-            <span className="text-sm font-bold text-gradient-cosmic">ABOUT ME</span>
+          <div className="inline-flex items-center px-6 py-2 rounded-full glass-panel border-[#D4AF37]/20 mb-8">
+            <Sparkles className="w-4 h-4 text-[#D4AF37] mr-3" />
+            <span className="text-xs font-bold tracking-[0.4em] text-[#d0c5af] uppercase font-cinzel">The Archivist's Origin</span>
           </div>
-          <h2 className="text-7xl md:text-8xl font-harry leading-tight">
-            Know <span className="text-gradient-cosmic glow-gold">Me</span>
+          <h2 className="text-7xl md:text-8xl text-white font-cinzel tracking-tight leading-none mb-6">
+            The <span className="text-reveal glow-gold">Manifestation</span>
           </h2>
-          <div className="flex justify-center gap-2 mt-6">
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"
-                style={{ animationDelay: `${i * 0.2}s` }}
-              ></div>
-            ))}
-          </div>
+          <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto"></div>
+          <p className="text-xl text-[#99907c] mt-10 max-w-2xl mx-auto font-serif italic">
+            "A weaver of code, a dreamer of designs, and a relentless pursuer of digital perfection in the celestial void."
+          </p>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+        {/* Main Content Grid - The Scribe's Portrait */}
+        <div className="grid lg:grid-cols-2 gap-24 items-center mb-40">
           {/* Left: Profile Section */}
           <div
             ref={el => elementsRef.current[0] = el}
-            className={`space-y-8 transition-all duration-1000 ${visibleElements.has(0) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
+            className={`relative transition-all duration-1000 ${visibleElements.has(0) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
               }`}
           >
-            {/* Profile Image Card */}
+            {/* Profile Image - The Soul Image */}
             <div className="relative group">
-              {/* Rotating Ring */}
-              <div className="absolute inset-[-20px] rounded-full border-2 border-dashed border-white/10 animate-spin" style={{ animationDuration: '30s' }}></div>
+              {/* Rotating Celestial Orbit */}
+              <div className="absolute -inset-10 rounded-full border border-[#D4AF37]/10 animate-spin-slow pointer-events-none"></div>
+              <div className="absolute -inset-20 rounded-full border border-white/5 animate-reverse-spin pointer-events-none" style={{ animationDuration: '40s' }}></div>
 
-              <div className="relative aspect-square max-w-md mx-auto rounded-3xl overflow-hidden border-4 border-white/10 shadow-2xl group-hover:border-white/20 transition-all duration-500">
-                <img
-                  src={AaryanImage}
-                  alt="Aaryan Patel"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-
-                {/* Overlay Effects */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-
-                {/* Scan Effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-2000"></div>
-
-                {/* Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="text-3xl text-white font-harry">Aaryan Patel</h3>
-                  <p className="text-gray-400">Software Engineer</p>
+              <div className="relative aspect-square max-w-md mx-auto rounded-full p-2 glass-panel border-[#D4AF37]/30 shadow-[0_0_50px_rgba(212,175,55,0.1)] overflow-hidden group-hover:scale-105 transition-all duration-700">
+                <div className="w-full h-full rounded-full overflow-hidden">
+                  <img
+                    src={AaryanImage}
+                    alt="Aaryan Patel"
+                    className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000"
+                  />
                 </div>
 
-                {/* Corner Decorations */}
-                {[...Array(4)].map((_, i) => (
-                  <div
-                    key={i}
-                    className={`absolute w-4 h-4 border-2 ${i === 0 ? 'top-4 left-4 border-t-white/40 border-l-white/40' :
-                      i === 1 ? 'top-4 right-4 border-t-white/40 border-r-white/40' :
-                        i === 2 ? 'bottom-4 left-4 border-b-white/40 border-l-white/40' :
-                          'bottom-4 right-4 border-b-white/40 border-r-white/40'
-                      } opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                    style={{ transitionDelay: `${i * 100}ms` }}
-                  ></div>
-                ))}
+                {/* Ethereal Glow Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent"></div>
               </div>
 
-              {/* Floating Badge */}
-              <div className="absolute -bottom-6 -right-6 space-card border-2 border-white/20 p-4 rounded-2xl shadow-xl backdrop-blur-sm">
-                <div className="text-3xl font-black text-gradient-cosmic">{counters.experience}+</div>
-                <div className="text-sm text-gray-400">Years</div>
-              </div>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-card border-2 border-white/10 p-6 rounded-2xl hover:scale-105 transition-transform group">
-                <Rocket className="w-10 h-10 text-white/60 mb-3 group-hover:translate-y-[-5px] transition-transform" />
-                <div className="text-4xl font-black text-gradient-cosmic">{counters.projects}+</div>
-                <div className="text-sm text-gray-400">Projects</div>
-              </div>
-
-              <div className="space-card border-2 border-white/10 p-6 rounded-2xl hover:scale-105 transition-transform group">
-                <Star className="w-10 h-10 text-white/60 mb-3 group-hover:rotate-12 transition-transform" fill="currentColor" />
-                <div className="text-4xl font-black text-gradient-nebula">{counters.satisfaction}%</div>
-                <div className="text-sm text-gray-400">Satisfaction</div>
+              {/* Floating Stat Medallions */}
+              <div className="absolute -bottom-10 -right-10 glass-panel-heavy p-6 rounded-3xl border-[#D4AF37]/30 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 box-glow-gold">
+                <div className="text-4xl font-harry text-[#D4AF37] mb-1">{counters.experience}+</div>
+                <div className="text-[10px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel">Eons of Dev</div>
               </div>
             </div>
           </div>
 
-          {/* Right: About Content */}
+          {/* Right: Personal Grimoire */}
           <div
             ref={el => elementsRef.current[1] = el}
-            className={`space-y-8 transition-all duration-1000 delay-200 ${visibleElements.has(1) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
+            className={`space-y-12 transition-all duration-1000 delay-200 ${visibleElements.has(1) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
               }`}
           >
-            <div className="space-y-6">
-              <h3 className="text-5xl text-white font-harry leading-tight">
-                Cosmic Code <br />
-                <span className="text-gradient-nebula animate-pulse-glow">Explorer</span>
+            <div className="space-y-8">
+              <h3 className="text-5xl text-white font-cinzel leading-tight tracking-tight">
+                Architect of the <br />
+                <span className="text-reveal glow-gold">Digital Aether</span>
               </h3>
 
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-                <p className="relative pl-6 before:content-['▸'] before:absolute before:left-0 before:text-[#D4AF37] before:text-2xl">
-                  I'm a Software Engineer navigating through the vast cosmos of technology. My mission is to build stellar applications that transcend dimensions.
+              <div className="space-y-6 text-[#d0c5af] text-lg font-serif italic leading-relaxed">
+                <p className="border-l-2 border-[#D4AF37]/30 pl-8">
+                  "In the beginning, there was code. Then came the structure. Now, there is only the seamless fusion of logic and beauty that I strive to create every single day."
                 </p>
-                <p className="relative pl-6 before:content-['▸'] before:absolute before:left-0 before:text-cyan-400 before:text-2xl">
-                  When not coding, I explore new frontiers in AI and Machine Learning, constantly pushing the boundaries of what's possible.
+                <p className="pl-8 text-base not-italic text-[#99907c] font-sans">
+                  I am Aaryan Patel, a Software Engineer dedicated to crafting experiences that feel less like software and more like magic. Each line of code is a brushstroke in a much larger masterpiece.
                 </p>
               </div>
             </div>
 
-            {/* Passions */}
-            <div className="flex flex-wrap gap-4">
-              {passions.map((passion, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 space-card border border-[#D4AF37]/30 px-5 py-3 rounded-full hover:scale-105 hover:border-[#D4AF37]/60 transition-all"
-                >
-                  <passion.icon className={`w-5 h-5 ${passion.color}`} />
-                  <span className="text-sm font-medium text-gray-300">{passion.label}</span>
-                </div>
-              ))}
+            {/* Stats - The Pillars of Merit */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="glass-panel p-8 rounded-3xl border-white/5 hover:border-[#D4AF37]/40 transition-all group box-glow-gold">
+                <Rocket className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:animate-bounce" />
+                <div className="text-5xl font-harry text-white">{counters.projects}+</div>
+                <div className="text-[10px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel mt-2">Relics Forged</div>
+              </div>
+
+              <div className="glass-panel p-8 rounded-3xl border-white/5 hover:border-[#D4AF37]/40 transition-all group box-glow-gold">
+                <Star className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:rotate-45 transition-transform" fill="currentColor" />
+                <div className="text-5xl font-harry text-white">{counters.satisfaction}%</div>
+                <div className="text-[10px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel mt-2">Favor of Gods</div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Coding Profiles - Premium Glass Cards */}
+        {/* Coding Profiles - The Celestial Guilds */}
         <div
           ref={el => elementsRef.current[2] = el}
-          className="mb-24 relative"
+          className="mb-40 pt-20"
         >
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#D4AF37]/20 to-cyan-500/20 border border-[#D4AF37]/30 mb-6">
-              <Code2 className="w-4 h-4 text-[#D4AF37] mr-2" />
-              <span className="text-sm font-medium text-[#D4AF37]">COMPETITIVE PROGRAMMING</span>
+          <div className="text-center mb-20 space-y-4">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-panel border-[#D4AF37]/20">
+              <Code2 className="w-4 h-4 text-[#D4AF37] mr-3" />
+              <span className="text-[10px] font-bold tracking-[0.3em] text-[#d0c5af] uppercase font-cinzel">The Competitive Ranks</span>
             </div>
-            <h3 className="text-5xl font-harry">
-              Coding <span className="text-gradient-cosmic">Profiles</span>
+            <h3 className="text-5xl md:text-6xl text-white font-cinzel tracking-tight leading-none">
+              Guild <span className="text-reveal glow-gold"> standings</span>
             </h3>
-            <p className="text-gray-400 max-w-xl mx-auto">
-              Real-time stats from my coding journey across platforms
-            </p>
           </div>
 
-          {/* Loading State */}
-          {loading && (
-            <div className="flex justify-center gap-8">
-              {[1, 2].map((_, i) => (
-                <div key={i} className="w-80 h-72 rounded-3xl bg-white/5 animate-pulse" />
-              ))}
-            </div>
-          )}
-
-          {/* Debug: Show if no profiles */}
-          {!loading && codingProfiles.length === 0 && (
-            <div className="text-center text-red-400 py-8">
-              <p>No profiles loaded. Check console for errors.</p>
-              <p className="text-sm text-gray-500 mt-2">API URL: {import.meta.env.VITE_API_URL || 'http://localhost:5000'}</p>
-            </div>
-          )}
-
           {/* Profile Cards Grid */}
-          {!loading && codingProfiles.length > 0 && (
-            <div
-              className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto px-4"
-            >
+          {!loading && (
+            <div className="flex flex-wrap justify-center gap-8 px-4">
               {codingProfiles.map((profile, index) => {
-                const isVisible = visibleElements.has(2)
+                const isVisible = visibleElements.has(2);
 
                 return (
                   <a
@@ -355,158 +285,103 @@ function About() {
                     href={profile.profileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                    className={`group relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                     style={{ transitionDelay: `${index * 200}ms` }}
                   >
-                    {/* Glow Effect */}
-                    <div className={`absolute -inset-4 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37] to-cyan-500'} rounded-3xl opacity-0 group-hover:opacity-40 blur-2xl transition-all duration-500`} />
+                    {/* Shadow/Glow Background */}
+                    <div className="absolute -inset-4 bg-[#D4AF37]/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-                    {/* Card */}
-                    <div className="relative w-72 h-80 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl group-hover:border-white/40 group-hover:scale-105 transition-all duration-500 overflow-hidden">
-
-                      {/* Animated Background Gradient */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37]/10 to-cyan-500/10'} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
-                      {/* Shine Effect on Hover */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 group-hover:left-full transition-all duration-1000" />
+                    <div className="relative w-[300px] h-[380px] archive-card rounded-3xl p-8 border-white/5 group-hover:border-[#D4AF37]/40 transition-all duration-700 overflow-hidden box-glow-gold">
+                      {/* Platform Emoji Background */}
+                      <div className="absolute -right-8 -top-8 text-[180px] opacity-[0.03] group-hover:opacity-[0.07] transition-all duration-1000 rotate-12 group-hover:rotate-0">
+                        {profile.emoji || '💻'}
                       </div>
 
-                      {/* DEFAULT VIEW - Profile Preview */}
-                      <div className="absolute inset-0 p-8 flex flex-col items-center justify-center transition-all duration-500 group-hover:opacity-0 group-hover:scale-95 group-hover:translate-y-4">
-                        {/* Platform Icon */}
-                        <div className={`w-24 h-24 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37] to-cyan-500'} rounded-2xl flex items-center justify-center mb-5 shadow-2xl transition-all duration-300`}>
-                          <span className="text-5xl">{profile.emoji || '💻'}</span>
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-20 h-20 glass-panel-heavy rounded-2xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition-transform duration-500 border-[#D4AF37]/20 shadow-xl">
+                          {profile.emoji || '💻'}
                         </div>
 
-                        {/* Platform Name */}
-                        <h4 className="text-2xl text-white text-center mb-1 font-harry">
-                          {profile.platform}
-                        </h4>
-                        <p className="text-gray-300 text-sm text-center mb-4">{profile.username}</p>
-
-                        {/* Hover Hint */}
-                        <div className="flex items-center gap-2 text-gray-400 text-xs mt-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
-                          <span>Hover to see stats</span>
-                        </div>
-                      </div>
-
-                      {/* HOVER VIEW - Stats */}
-                      <div className="absolute inset-0 p-6 flex flex-col opacity-0 scale-95 -translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0">
-                        {/* Compact Header */}
-                        <div className="flex items-center gap-3 mb-4 pb-4 border-b border-white/10">
-                          <div className={`w-12 h-12 bg-gradient-to-br ${profile.gradient || 'from-[#D4AF37] to-cyan-500'} rounded-xl flex items-center justify-center shadow-lg`}>
-                            <span className="text-2xl">{profile.emoji || '💻'}</span>
-                          </div>
-                          <div>
-                            <h4 className="text-lg text-white font-harry">{profile.platform}</h4>
-                            <p className="text-gray-300 text-xs">{profile.username}</p>
-                          </div>
+                        <div className="space-y-1 mb-8">
+                          <h4 className="text-3xl text-white font-cinzel leading-none tracking-tight">
+                            {profile.platform}
+                          </h4>
+                          <p className="text-sm text-[#99907c] font-medium tracking-widest uppercase">
+                            {profile.username}
+                          </p>
                         </div>
 
-                        {/* Stats Grid */}
-                        <div className="flex-1 space-y-3">
-                          {profile.stats && Object.keys(profile.stats).length > 0 ? (
-                            Object.entries(profile.stats).map(([key, value], idx) => (
-                              <div
-                                key={key}
-                                className="flex justify-between items-center py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-all"
-                                style={{
-                                  transitionDelay: `${idx * 50}ms`
-                                }}
-                              >
-                                <span className="text-gray-200 text-sm capitalize font-medium">{key}</span>
-                                <span className="text-lg font-bold text-white group-hover:text-white transition-colors">
-                                  {value}
-                                </span>
-                              </div>
-                            ))
-                          ) : (
-                            <div className="text-center text-gray-500 text-sm py-4">
-                              Loading stats...
+                        {/* Profile Stats Mini-List */}
+                        <div className="flex-1 space-y-4">
+                          {profile.stats && Object.entries(profile.stats).slice(0, 3).map(([key, value], idx) => (
+                            <div key={key} className="flex justify-between items-center group/stat">
+                              <span className="text-[10px] font-bold text-[#99907c] tracking-[0.2em] uppercase font-cinzel group-hover/stat:text-[#d0c5af] transition-colors">{key}</span>
+                              <span className="text-xl font-harry text-[#D4AF37]">{value}</span>
                             </div>
-                          )}
+                          ))}
                         </div>
 
-                        {/* View Profile Link */}
-                        <div className="pt-4 mt-auto text-center border-t border-white/10">
-                          <span className="inline-flex items-center text-sm text-[#D4AF37] hover:text-white transition-colors">
-                            View Full Profile
-                            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </span>
+                        <div className="pt-8 border-t border-white/5 flex items-center justify-between group-hover:pt-6 transition-all duration-500">
+                          <span className="text-[10px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase font-cinzel opacity-0 group-hover:opacity-100 transition-opacity">Enter Profile</span>
+                          <ExternalLink className="w-4 h-4 text-[#D4AF37] transform translate-y-1 group-hover:translate-y-0 transition-transform" />
                         </div>
                       </div>
-
-                      {/* Corner Decorations */}
-                      <div className="absolute top-4 left-4 w-3 h-3 border-t-2 border-l-2 border-white/30 rounded-tl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="absolute bottom-4 right-4 w-3 h-3 border-b-2 border-r-2 border-white/30 rounded-br opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </a>
                 );
               })}
             </div>
           )}
-
-          {/* Ambient Background Effects */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
-            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-[#D4AF37]/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-            <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-          </div>
         </div>
 
-        {/* Achievements Section */}
+        {/* Achievements Section - The Hall of Eternal Fame */}
         {achievements.length > 0 && (
-          <div className="mb-24 relative">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 mb-6">
-                <Trophy className="w-4 h-4 text-yellow-400 mr-2" />
-                <span className="text-sm font-medium text-yellow-300">HALL OF FAME</span>
+          <div className="mb-40 relative">
+            <div className="text-center mb-24 space-y-4">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-panel border-[#D4AF37]/20">
+                <Trophy className="w-4 h-4 text-[#D4AF37] mr-3" />
+                <span className="text-[10px] font-bold tracking-[0.3em] text-[#d0c5af] uppercase font-cinzel">Hall of Eternal Fame</span>
               </div>
-              <h3 className="text-5xl font-harry">
-                My <span className="text-gradient-nebula glow-cyan">Achievements</span>
+              <h3 className="text-5xl md:text-6xl text-white font-cinzel tracking-tight leading-none">
+                Artifacts of <span className="text-reveal glow-gold"> Merit</span>
               </h3>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
               {achievements.map((achievement, idx) => {
                 const IconComponent = achievementIcons[achievement.icon] || Trophy;
 
                 return (
                   <div
                     key={achievement.id}
-                    className="group relative space-card p-6 border border-white/10 hover:border-yellow-500/40 rounded-2xl transition-all duration-300 hover:-translate-y-2"
+                    className="group relative archive-card p-10 border-white/5 hover:border-[#D4AF37]/40 rounded-[2.5rem] transition-all duration-700 hover:-translate-y-4 box-glow-gold"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-
-                    <div className="relative z-10">
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-yellow-500/30 transition-colors">
-                          <IconComponent className="w-6 h-6 text-yellow-400" />
+                    <div className="relative z-10 space-y-8">
+                      <div className="flex justify-between items-center">
+                        <div className="w-16 h-16 glass-panel-heavy rounded-2xl flex items-center justify-center border-[#D4AF37]/20">
+                          <IconComponent className="w-8 h-8 text-[#D4AF37]" />
                         </div>
-                        <span className="text-xs text-gray-400 border border-white/10 px-2 py-1 rounded-full">{achievement.date}</span>
+                        <span className="text-[10px] text-[#99907c] font-bold tracking-[0.2em] uppercase font-cinzel">{achievement.date}</span>
                       </div>
 
-                      <h4 className="text-xl font-bold text-white mb-2">{achievement.title}</h4>
-                      <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                        {achievement.description}
-                      </p>
+                      <div className="space-y-4">
+                        <h4 className="text-2xl font-cinzel text-white leading-tight">{achievement.title}</h4>
+                        <p className="text-base text-[#99907c] leading-relaxed font-serif italic border-l border-[#D4AF37]/20 pl-6">
+                          {achievement.description}
+                        </p>
+                      </div>
 
-                      {/* Only show View Certificate button if certificate exists */}
-                      {achievement.certificateImage ? (
+                      {achievement.certificateImage && (
                         <button
                           onClick={() => setSelectedCertificate(achievement)}
-                          className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all text-sm font-medium text-gray-300 hover:text-white group-hover:shadow-[0_0_20px_rgba(234,179,8,0.1)]"
+                          className="w-full py-4 glass-panel border-[#D4AF37]/20 text-[#D4AF37] text-[10px] font-bold tracking-[0.3em] uppercase font-cinzel rounded-2xl hover:bg-[#D4AF37] hover:text-black transition-all duration-500 overflow-hidden relative group/btn"
                         >
-                          <ExternalLink className="w-4 h-4" />
-                          View Certificate
+                          <span className="relative z-10 flex items-center justify-center gap-3">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            Examine Artifact
+                          </span>
+                          <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 opacity-10"></div>
                         </button>
-                      ) : (
-                        <div className="w-full py-2 flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 text-sm font-medium text-gray-500">
-                          <span>Certificate Not Available</span>
-                        </div>
                       )}
                     </div>
                   </div>
@@ -515,49 +390,47 @@ function About() {
             </div>
           </div>
         )}
-
       </div>
 
-      {/* Certificate Modal */}
+      {/* Certificate Modal - The Sanctum of Truth */}
       {selectedCertificate && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in-up">
-          <div className="relative max-w-4xl w-full bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-            <div className="flex justify-between items-center p-4 border-b border-white/10 bg-white/5">
-              <h3 className="text-xl font-bold text-white max-w-[80%] truncate">{selectedCertificate.title}</h3>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#050505]/95 backdrop-blur-2xl transition-all duration-500 animate-fade-in-up">
+          <div className="relative max-w-5xl w-full archive-card p-2 rounded-3xl border-[#D4AF37]/30 shadow-[0_0_100px_rgba(212,175,55,0.2)]">
+            <div className="flex justify-between items-center p-8 bg-transparent">
+              <div className="space-y-1">
+                <h3 className="text-2xl font-cinzel text-white">{selectedCertificate.title}</h3>
+                <p className="text-[10px] text-[#D4AF37] tracking-[0.4em] uppercase">Document of Merit</p>
+              </div>
               <button
                 onClick={() => setSelectedCertificate(null)}
-                className="p-2 rounded-full hover:bg-white/10 transition-colors"
+                className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[#d0c5af] hover:text-white transition-all hover:rotate-90 group"
               >
-                <X className="w-6 h-6 text-gray-400 hover:text-white" />
+                <X className="w-5 h-5 group-hover:scale-125 transition-transform" />
               </button>
             </div>
-            <div className="p-1 bg-black/50 h-[70vh] flex items-center justify-center">
-              {/* Handle PDF vs Image */}
-              {selectedCertificate.certificateImage && selectedCertificate.certificateImage.toLowerCase().endsWith('.pdf') ? (
-                <iframe
-                  src={getCertificatePath(selectedCertificate.certificateImage)}
-                  className="w-full h-full rounded-lg"
-                  title="Certificate Preview"
-                />
-              ) : (
-                <img
-                  src={getCertificatePath(selectedCertificate.certificateImage)}
-                  alt={selectedCertificate.title}
-                  className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "https://via.placeholder.com/800x600?text=Certificate+Not+Found";
-                  }}
-                />
-              )}
-            </div>
-            <div className="p-4 border-t border-white/10 bg-white/5 flex justify-end">
-              <button
-                onClick={() => setSelectedCertificate(null)}
-                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors"
-              >
-                Close
-              </button>
+            
+            <div className="px-8 pb-8 h-[65vh] overflow-hidden">
+               <div className="w-full h-full glass-panel-heavy rounded-2xl overflow-hidden p-2 border-white/5">
+                {selectedCertificate.certificateImage && selectedCertificate.certificateImage.toLowerCase().endsWith('.pdf') ? (
+                  <iframe
+                    src={getCertificatePath(selectedCertificate.certificateImage)}
+                    className="w-full h-full rounded-lg"
+                    title="Certificate Preview"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-[#0e0e0e]/50 rounded-lg">
+                    <img
+                      src={getCertificatePath(selectedCertificate.certificateImage)}
+                      alt={selectedCertificate.title}
+                      className="max-w-full max-h-full object-contain"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://via.placeholder.com/800x600?text=Artifact+Not+Found";
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

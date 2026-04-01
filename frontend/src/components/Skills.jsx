@@ -47,107 +47,100 @@ export default function Skills() {
     : skills.filter(s => s.category === activeCategory);
 
   return (
-    <section id="skills" className="py-24 relative overflow-hidden bg-[#050505]">
+    <section id="skills" className="py-40 relative overflow-hidden bg-transparent">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-      {/* Magical Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="gold-dust" style={{ top: '10%', left: '20%', animationDelay: '0s' }} />
-        <div className="gold-dust" style={{ top: '30%', left: '70%', animationDelay: '1s' }} />
-        <div className="gold-dust" style={{ top: '60%', left: '40%', animationDelay: '2s' }} />
-        <div className="gold-dust" style={{ top: '80%', left: '10%', animationDelay: '0.5s' }} />
-        <div className="gold-dust" style={{ top: '15%', left: '85%', animationDelay: '1.5s' }} />
-
-        {/* Subtle Ambient Glow */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37] opacity-[0.03] blur-[150px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#740001] opacity-[0.03] blur-[150px] rounded-full" />
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-
-        {/* Header - Magical Theme */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-[#D4AF37] mb-4 border border-[#D4AF37]/30 px-4 py-1.5 rounded-full bg-[#D4AF37]/5 backdrop-blur-sm animate-fade-in-up">
-            <Sparkles className="w-4 h-4 animate-spin-slow" />
-            <span className="text-sm font-harry tracking-widest uppercase">Magical Mastery</span>
+        {/* Dynamic Header */}
+        <div className="mb-32 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-4 px-4 py-1.5 glass-panel rounded-full border-[#D4AF37]/30">
+              <Sparkles className="w-4 h-4 text-[#D4AF37] animate-spin-slow" />
+              <span className="text-[10px] font-bold tracking-[0.4em] text-[#d0c5af] uppercase font-cinzel">The Great Grimoire</span>
+            </div>
+            <h2 className="text-7xl md:text-8xl text-white font-cinzel tracking-tighter leading-tight">
+              Mastered <span className="text-reveal italic">Spells</span>
+            </h2>
           </div>
-          <h2 className="text-6xl md:text-7xl font-harry text-white mb-6 animate-fade-in-up" style={{ textShadow: '0 0 20px rgba(212, 175, 55, 0.3)' }}>
-            Arsenal of Spells
-          </h2>
-          <p className="text-[#94a3b8] max-w-2xl mx-auto text-lg font-serif italic animate-fade-in-up delay-100">
-            "A wizard is only as good as the spells they master. Here lies the collection of incantations and artifacts I've acquired."
-          </p>
+          <div className="max-w-sm hidden lg:block">
+             <p className="text-xl text-[#99907c] font-serif italic border-l-2 border-[#D4AF37]/40 pl-8 py-2">
+                "An archive of manifestations distilled into pure digital essence. Each skill represents a milestone in the journey across the cosmic void of code."
+             </p>
+          </div>
         </div>
 
-        {/* Filter Tabs - Scroll - Magical Design */}
-        <div className="flex justify-center mb-12 animate-fade-in-up delay-200">
-          <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-full bg-[#1a1a1a]/80 border border-[#D4AF37]/20 backdrop-blur-md shadow-lg shadow-[#D4AF37]/5">
+        {/* Diagonal Navigation Grid */}
+        <div className="relative mb-32 -mx-4">
+          <div className="flex flex-wrap justify-center gap-4 py-8 bg-white/[0.01] border-y border-white/5 transform -skew-y-2">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-6 py-2 rounded-full text-sm font-serif tracking-wide transition-all duration-300 relative overflow-hidden group
-                    ${activeCategory === cat.id
-                    ? "text-[#050505] bg-gradient-to-r from-[#D4AF37] to-[#F4C430] font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                    : "text-[#94a3b8] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"}`}
+                className={`group px-10 py-4 transform skew-y-2 transition-all duration-700 relative
+                  ${activeCategory === cat.id ? "scale-110 active:scale-95" : "hover:scale-105"}`}
               >
-                <span className="relative z-10">{cat.label}</span>
-                {activeCategory !== cat.id && (
-                  <span className="absolute inset-0 bg-[#D4AF37]/5 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
+                <div className={`text-xs font-bold tracking-[0.5em] uppercase font-cinzel transition-all duration-700
+                  ${activeCategory === cat.id ? "text-white glow-gold" : "text-[#555] hover:text-[#999]"}`}>
+                  {cat.label}
+                </div>
+                {activeCategory === cat.id && (
+                  <div className="absolute inset-0 bg-[#D4AF37]/10 blur-xl animate-pulse"></div>
                 )}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Skills Grid */}
+        {/* Skewed Skills Gallery */}
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <div className="w-16 h-16 border-4 border-[#D4AF37]/20 border-t-[#D4AF37] rounded-full animate-spin mb-4" />
-            <p className="text-[#D4AF37] font-harry text-xl animate-pulse">Summoning Skills...</p>
+          <div className="flex flex-col items-center justify-center py-40">
+            <div className="w-12 h-12 border-2 border-[#D4AF37]/20 border-t-[#D4AF37] rounded-full animate-spin mb-8" />
+            <p className="text-[#D4AF37] font-harry text-xl tracking-[0.4em] animate-pulse">Manifesting Archive...</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 transform -skew-y-2">
             {filteredSkills.map((skill, idx) => (
               <div
                 key={idx}
-                className="group relative h-full animate-fade-in-up"
+                className="group relative transform skew-y-2 animate-fade-in-up"
                 style={{ animationDelay: `${idx * 0.05}s` }}
               >
-                {/* Card Container */}
-                <div className="h-full p-6 rounded-2xl bg-[#111] border border-[#333] group-hover:border-[#D4AF37]/50 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center transform group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.2)]">
+                {/* The Shard Card */}
+                <div className="archive-card h-full p-10 rounded-[3rem] border-white/5 hover:border-[#D4AF37]/40 transition-all duration-700 flex items-center gap-8 group-hover:bg-[#0a0a0a] group-hover:-translate-y-4 group-hover:box-glow-gold relative overflow-hidden">
+                  
+                  {/* Glowing Core */}
+                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D4AF37]/5 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                  {/* Hover Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-b ${skill.color ? skill.color.replace('from-', 'from-').replace('to-', 'to-') : 'from-[#D4AF37]/10 to-transparent'} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-
-                  {/* Icon Circle with Magical Glow */}
-                  <div className="relative w-16 h-16 mb-6 rounded-full bg-[#050505] border border-[#333] group-hover:border-[#D4AF37] flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-                    <skill.icon className="w-8 h-8 text-[#94a3b8] group-hover:text-[#D4AF37] transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-12" />
-
-                    {/* Orbiting Particles ring (CSS only) */}
-                    <div className="absolute inset-0 rounded-full border border-[#D4AF37]/0 group-hover:border-[#D4AF37]/30 scale-125 transition-all duration-700 opacity-0 group-hover:opacity-100" />
+                  {/* Icon Focus - Minimal */}
+                  <div className="relative w-16 h-16 shrink-0 rounded-2xl glass-panel-heavy border-white/5 group-hover:border-[#D4AF37] flex items-center justify-center transition-all duration-700 shadow-xl group-hover:rotate-12">
+                    <skill.icon className="w-6 h-6 text-[#777] group-hover:text-[#D4AF37] transition-all duration-700" />
                   </div>
 
-                  {/* Text Content */}
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#D4AF37] transition-colors">{skill.name}</h3>
-                  <div className="w-full bg-[#222] h-1.5 rounded-full overflow-hidden mb-3">
-                    <div
-                      className="h-full bg-gradient-to-r from-[#D4AF37] to-[#F4C430] transition-all duration-1000 ease-out transform origin-left scale-x-0 group-hover:scale-x-100"
-                      style={{ width: `${skill.level}%`, transitionDelay: '0.1s' }}
-                    />
-                    <div
-                      className="h-full bg-[#333] group-hover:hidden"
-                      style={{ width: `${skill.level}%` }}
-                    />
+                  <div className="flex-1 space-y-4">
+                    <div className="flex flex-col">
+                       <span className="text-[9px] font-bold text-[#D4AF37]/50 tracking-[0.3em] uppercase font-cinzel mb-1 group-hover:text-[#D4AF37] transition-colors">{skill.category || 'Relic'}</span>
+                       <h3 className="text-3xl text-white font-cinzel group-hover:text-[#D4AF37] transition-all duration-500 tracking-tighter leading-none">
+                         {skill.name}
+                       </h3>
+                    </div>
+                    
+                    {/* Minimal Energy Bar */}
+                    <div className="pt-2">
+                       <div className="flex justify-between items-center mb-2">
+                          <span className="text-[10px] font-bold text-[#555] tracking-[0.2em] uppercase font-cinzel">Concentration</span>
+                          <span className="text-xl font-harry text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity">{skill.level}%</span>
+                       </div>
+                       <div className="w-full h-[1px] bg-white/5 relative overflow-hidden">
+                          <div
+                            className="absolute inset-y-0 left-0 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent transition-all duration-[2s] ease-out shadow-[0_0_15px_#D4AF37]"
+                            style={{ width: `${skill.level}%` }}
+                          />
+                        </div>
+                    </div>
                   </div>
 
-                  <div className="flex justify-between w-full text-xs font-serif text-[#666] group-hover:text-[#8B7500] uppercase tracking-wider">
-                    <span>Power Level</span>
-                    <span>{skill.level}%</span>
-                  </div>
-
-                  {/* Decorative Runes */}
-                  <div className="absolute top-4 right-4 text-[#D4AF37]/20 group-hover:text-[#D4AF37]/40 text-xs font-harry rotate-12 transition-colors">
-                    Lumos
+                  {/* Aesthetic Watermark */}
+                  <div className="absolute -bottom-4 -right-4 text-7xl font-harry text-[#D4AF37]/5 group-hover:text-[#D4AF37]/10 transition-all duration-1000 rotate-12 pointer-events-none select-none">
+                    {idx + 1}
                   </div>
                 </div>
               </div>

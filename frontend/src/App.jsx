@@ -35,42 +35,28 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-black relative overflow-hidden">
-      {/* Global Subtle Background Layers */}
-      <div className="fixed inset-0 pointer-events-none">
-        {/* Subtle Star Layer */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
-          }}
-        >
-          <div className="stars"></div>
-        </div>
+    <div className="bg-[#050505] relative overflow-hidden min-h-screen selection:bg-[#D4AF37]/30 selection:text-white">
+      {/* Celestial Background Layers */}
+      <div className="starfield-v2">
+        <div className="stars-v2"></div>
 
-        {/* Secondary Star Layer */}
-        <div
-          className="absolute inset-0 opacity-15"
-          style={{
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px) translateY(${scrollY * 0.05}px)`
-          }}
-        >
-          <div className="stars stars-layer-2"></div>
-        </div>
+        {/* Animated Gold Dust Particles */}
+        <div className="gold-dust" style={{ left: '10%', animationDelay: '0s' }}></div>
+        <div className="gold-dust" style={{ left: '30%', animationDelay: '5s' }}></div>
+        <div className="gold-dust" style={{ left: '50%', animationDelay: '2s' }}></div>
+        <div className="gold-dust" style={{ left: '70%', animationDelay: '8s' }}></div>
+        <div className="gold-dust" style={{ left: '90%', animationDelay: '3s' }}></div>
+        <div className="gold-dust" style={{ left: '20%', animationDelay: '7s', bottom: '0', top: 'auto', animationDirection: 'reverse' }}></div>
+        <div className="gold-dust" style={{ left: '80%', animationDelay: '1s', bottom: '0', top: 'auto', animationDirection: 'reverse' }}></div>
 
-        {/* Subtle Ambient Gradient */}
+        {/* Nebula Glows */}
         <div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[150px]"
-          style={{
-            transform: `translate(${mousePosition.x * 0.03}px, ${mousePosition.y * 0.03}px)`
-          }}
+          className="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] rounded-full bg-[#740001]/[0.05] blur-[120px] pointer-events-none"
+          style={{ transform: `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)` }}
         ></div>
-
         <div
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-white/[0.015] blur-[120px]"
-          style={{
-            transform: `translate(${mousePosition.x * -0.02}px, ${mousePosition.y * 0.02}px)`
-          }}
+          className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-[#D4AF37]/[0.03] blur-[100px] pointer-events-none"
+          style={{ transform: `translate(${mousePosition.x * -0.03}px, ${mousePosition.y * -0.03}px)` }}
         ></div>
       </div>
 
@@ -78,12 +64,14 @@ function App() {
       <div className="relative z-10">
         <GhostCursor />
         <Navigation />
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Contact />
+        </main>
         <Footer />
       </div>
     </div>

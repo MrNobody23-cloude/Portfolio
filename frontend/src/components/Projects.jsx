@@ -81,79 +81,48 @@ function Projects() {
   }, [projects]); // Add projects as dependency
 
   return (
-    <section ref={sectionRef} id="projects" className="py-24 section-dark relative overflow-hidden">
-      {/* Subtle Background Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-0.5 h-0.5 bg-white/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float-slow ${8 + Math.random() * 10}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          ></div>
-        ))}
-      </div>
-
-      {/* Subtle Ambient Light */}
-      <div
-        className="absolute top-40 right-0 w-32 h-32 rounded-full bg-white/[0.02] blur-2xl"
-        style={{
-          transform: `translateY(${scrollProgress * 100}px) translateX(${scrollProgress * -50}px)`
-        }}
-      ></div>
-
-      <div
-        className="absolute bottom-40 left-0 w-40 h-40 rounded-full bg-white/[0.015] blur-2xl"
-        style={{
-          transform: `translateY(${scrollProgress * -80}px) translateX(${scrollProgress * 50}px)`
-        }}
-      ></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section ref={sectionRef} id="projects" className="py-32 relative overflow-hidden bg-transparent">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header with Parallax */}
         <div
-          className="text-center mb-20"
+          className="text-center mb-32"
           style={{
             transform: `translateY(${scrollProgress * -30}px)`,
             opacity: 1 - scrollProgress * 0.3
           }}
         >
-          <div className="inline-flex items-center px-5 py-2 rounded-full space-card border border-white/20 mb-4 animate-fade-in-up">
-            <Rocket className="w-5 h-5 text-white/60 mr-2" />
-            <span className="text-sm font-semibold text-gray-300">PORTFOLIO</span>
+          <div className="inline-flex items-center px-6 py-2 rounded-full glass-panel border-[#D4AF37]/20 mb-6">
+            <Rocket className="w-4 h-4 text-[#D4AF37] mr-3" />
+            <span className="text-xs font-bold tracking-[0.3em] text-[#d0c5af] uppercase font-cinzel">The Great Archive</span>
           </div>
-          <h2 className="text-5xl md:text-6xl text-white mb-6 font-harry animate-fade-in-up stagger-1">
-            Featured <span className="text-gradient-cosmic glow-gold">Projects</span>
+          <h2 className="text-6xl md:text-7xl text-white mb-8 font-cinzel tracking-wider">
+            Featured <span className="text-reveal glow-gold">Artifacts</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-white to-gray-600 mx-auto rounded-full animate-scale-in stagger-2"></div>
-          <p className="text-lg text-gray-400 mt-6 max-w-2xl mx-auto animate-fade-in-up stagger-3">
-            Showcasing my development journey
+          <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto"></div>
+          <p className="text-xl text-[#99907c] mt-8 max-w-2xl mx-auto font-serif italic">
+            "A collection of digital manifestations, each forged in the fires of logic and bound by the laws of exceptional UX."
           </p>
         </div>
 
         {/* Loading State */}
         {loading && (
           <div className="text-center py-20">
-            <div className="inline-block w-16 h-16 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-gray-400 mt-4 text-lg">Loading projects...</p>
+            <div className="inline-block w-20 h-20 border-2 border-[#D4AF37]/20 border-t-[#D4AF37] rounded-full animate-spin"></div>
+            <p className="text-[#D4AF37] mt-6 tracking-widest font-harry text-xl">Consulting the Oracles...</p>
           </div>
         )}
 
         {/* Error State */}
         {error && (
-          <div className="text-center py-20">
-            <p className="text-red-400 text-lg">Error: {error}</p>
-            <p className="text-gray-500 mt-2">Please check if the backend server is running on port 5000</p>
+          <div className="text-center py-20 px-8 glass-panel rounded-3xl border-[#740001]/30">
+            <p className="text-[#AE0001] text-xl font-bold font-cinzel">The Archive is Sealed</p>
+            <p className="text-[#99907c] mt-4 font-serif italic">{error}</p>
           </div>
         )}
 
         {/* Projects - Dynamic 3D Cards */}
         {!loading && !error && projects.length > 0 && (
-          <div className="space-y-32">
+          <div className="space-y-40">
             {projects.map((project, index) => {
               const isVisible = visibleProjects.has(index);
               const isEven = index % 2 === 0;
@@ -162,142 +131,127 @@ function Projects() {
                 <div
                   key={project.id}
                   ref={el => projectRefs.current[index] = el}
-                  className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'
+                  className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
                     }`}
                 >
-                  {/* Connecting Line */}
+                  {/* Connecting Celestial Thread */}
                   {index < projects.length - 1 && (
                     <div
-                      className={`absolute ${isEven ? 'right-0' : 'left-0'} top-full w-0.5 h-32 bg-gradient-to-b from-[#D4AF37] to-transparent transition-all duration-1000 ${isVisible ? 'scale-y-100' : 'scale-y-0'
+                      className={`absolute ${isEven ? 'right-0' : 'left-0'} top-full w-[1px] h-40 bg-gradient-to-b from-[#D4AF37]/40 to-transparent transition-all duration-1000 ${isVisible ? 'scale-y-100' : 'scale-y-0'
                         }`}
                       style={{ transformOrigin: 'top' }}
                     ></div>
                   )}
 
-                  <div className={`grid lg:grid-cols-2 gap-12 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}>
-                    {/* Project Image - Floating Animation */}
+                  <div className={`grid lg:grid-cols-2 gap-16 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}>
+                    {/* Project Image - Artifact Visualization */}
                     <div
                       className={`relative group ${isEven ? '' : 'lg:col-start-2'}`}
-                      style={{
-                        transform: isVisible
-                          ? 'translateX(0) rotateY(0deg)'
-                          : `translateX(${isEven ? '-100px' : '100px'}) rotateY(${isEven ? '20deg' : '-20deg'})`,
-                        transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                      }}
                     >
-                      {/* Hover Glow Effect */}
-                      <div className="absolute -inset-4 bg-gradient-to-r from-[#D4AF37]/20 to-cyan-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      {/* Magical Aura */}
+                      <div className="absolute -inset-10 bg-gradient-to-br from-[#D4AF37]/10 via-transparent to-[#740001]/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
-                      {/* Image Container with 3D Effect */}
-                      <div className="relative overflow-hidden rounded-2xl border-2 border-[#D4AF37]/30 group-hover:border-[#D4AF37]/60 transition-all duration-300 shadow-2xl">
-                        <img
-                          src={project.imageUrl}
-                          alt={project.title}
-                          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
+                      <div className="relative archive-card rounded-2xl p-[1px] shadow-2xl overflow-hidden group-hover:scale-[1.03] transition-all duration-700">
+                        <div className="relative h-96 overflow-hidden rounded-2xl">
+                          <img
+                            src={project.imageUrl}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 group-hover:rotate-1"
+                          />
+                          
+                          {/* Ethereal Overlays */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80"></div>
+                          <div className="absolute inset-0 bg-[#D4AF37]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-                        {/* Overlay on Hover */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27] via-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          {/* Top Badge */}
+                          <div className="absolute top-6 right-6 px-6 py-2 glass-panel-heavy rounded-full border-[#D4AF37]/30">
+                            <span className="text-[#D4AF37] text-[10px] font-bold tracking-[0.2em] font-cinzel uppercase flex items-center gap-2">
+                              <Zap className="w-3 h-3" />
+                              {project.highlight}
+                            </span>
+                          </div>
 
-                        {/* Scan Line Effect */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-1000"></div>
-
-                        {/* Floating Badge */}
-                        <div className="absolute top-4 right-4 px-4 py-2 space-card border border-cyan-500/50 backdrop-blur-sm">
-                          <span className="text-cyan-300 text-sm font-bold flex items-center gap-2">
-                            <Zap className="w-4 h-4" />
-                            {project.highlight}
-                          </span>
-                        </div>
-
-                        {/* Tech Stack Icons */}
-                        <div className="absolute bottom-4 left-4 flex gap-2">
-                          {project.tags.slice(0, 3).map((tag, i) => (
-                            <div
-                              key={i}
-                              className="w-10 h-10 space-card rounded-lg flex items-center justify-center border border-[#D4AF37]/30 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                              style={{ transitionDelay: `${i * 100}ms` }}
-                            >
-                              <Cpu className="w-5 h-5 text-[#D4AF37]" />
-                            </div>
-                          ))}
+                          {/* Tech Icons Overlay */}
+                          <div className="absolute bottom-6 left-6 flex gap-3">
+                            {project.tags.slice(0, 3).map((tag, i) => (
+                              <div
+                                key={i}
+                                className="w-12 h-12 glass-panel-heavy rounded-xl flex items-center justify-center border-white/10 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                                style={{ transitionDelay: `${i * 100}ms` }}
+                              >
+                                <Cpu className="w-5 h-5 text-[#D4AF37]" />
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Project Details - Slide Animation */}
+                    {/* Project Details - Scholarly Description */}
                     <div
-                      className={`space-y-6 ${isEven ? '' : 'lg:col-start-1'}`}
-                      style={{
-                        transform: isVisible
-                          ? 'translateX(0) translateY(0)'
-                          : `translateX(${isEven ? '50px' : '-50px'}) translateY(30px)`,
-                        opacity: isVisible ? 1 : 0,
-                        transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                        transitionDelay: '200ms'
-                      }}
+                      className={`space-y-8 ${isEven ? '' : 'lg:col-start-1'}`}
                     >
-                      {/* Project Number */}
-                      <div className="flex items-center gap-4">
-                        <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-cosmic opacity-30">
+                      {/* Archive Index */}
+                      <div className="flex items-center gap-6">
+                        <div className="text-7xl font-harry text-[#D4AF37]/20 tracking-tighter">
                           {String(index + 1).padStart(2, '0')}
                         </div>
-                        <div className="flex-1 h-px bg-gradient-to-r from-[#D4AF37] to-transparent"></div>
+                        <div className="flex-1 h-[1px] bg-gradient-to-r from-[#D4AF37]/40 to-transparent"></div>
                       </div>
 
-                      {/* Title */}
-                      <h3 className="text-4xl md:text-5xl text-white font-harry leading-tight">
-                        {project.title}
-                      </h3>
+                      <div className="space-y-4">
+                        <h3 className="text-5xl md:text-6xl text-white font-cinzel leading-tight tracking-tight">
+                          {project.title}
+                        </h3>
+                        <p className="text-xl text-[#d0c5af]/90 font-serif leading-relaxed italic border-l-2 border-[#D4AF37]/20 pl-8">
+                          {project.description}
+                        </p>
+                      </div>
 
-                      {/* Description */}
-                      <p className="text-gray-300 text-lg leading-relaxed">
-                        {project.description}
-                      </p>
-
-                      {/* Tech Tags */}
-                      <div className="flex flex-wrap gap-3">
+                      {/* Runes (Tech Stack) */}
+                      <div className="flex flex-wrap gap-3 pt-4">
                         {project.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-4 py-2 bg-[#D4AF37]/10 text-[#D4AF37] text-sm font-medium rounded-full border border-[#D4AF37]/40 hover:bg-[#D4AF37]/20 hover:scale-105 transition-all duration-200"
+                            className="px-5 py-2 glass-panel text-[#d0c5af] text-[10px] font-bold tracking-[0.2em] rounded-full border-white/5 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-300 uppercase font-cinzel"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      {/* Action Buttons */}
-                      <div className="flex gap-4 pt-4">
+                      {/* Interaction Commands */}
+                      <div className="flex flex-wrap gap-6 pt-6">
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="space-button space-button-primary group"
+                          className="group relative px-8 py-4 glass-panel-heavy rounded-full font-bold text-[#D4AF37] border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all hover:scale-105 active:scale-95 flex items-center box-glow-gold"
                         >
-                          <ExternalLink className="w-5 h-5 mr-2 group-hover:rotate-45 transition-transform" />
-                          Launch Project
+                          <ExternalLink className="w-4 h-4 mr-3 group-hover:rotate-45 transition-transform" />
+                          <span className="text-[10px] tracking-[0.2em] uppercase font-cinzel">Invoke Ritual</span>
                         </a>
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="space-button group"
+                          className="group px-8 py-4 glass-panel rounded-full font-bold text-[#d0c5af] border-white/10 hover:border-white/30 transition-all hover:bg-white/5 flex items-center"
                         >
-                          <Github className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                          View Code
+                          <Github className="w-4 h-4 mr-3 group-hover:rotate-12 transition-transform" />
+                          <span className="text-[10px] tracking-[0.2em] uppercase font-cinzel">View Grimoire</span>
                         </a>
                       </div>
 
-                      {/* Decorative Stars */}
-                      <div className="flex gap-2 pt-4">
+                      {/* Favor of the Gods (Stars) */}
+                      <div className="flex gap-3 pt-6">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-4 h-4 text-yellow-400 transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+                            className={`w-4 h-4 text-[#D4AF37] transition-all duration-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
                               }`}
                             style={{ transitionDelay: `${800 + i * 100}ms` }}
-                            fill="currentColor"
+                            fill={i < 4 ? "currentColor" : "none"}
+                            stroke="currentColor"
                           />
                         ))}
                       </div>
@@ -309,7 +263,8 @@ function Projects() {
           </div>
         )}
       </div>
-    </section >
+    </section>
+
   );
 }
 
