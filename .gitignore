@@ -23,3 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 .env
+# Ignore all hidden files/folders
+.*
+
+# Allow Git system folder
+!.git/
+
+# (Optional but recommended)
+!.gitignore
+!.gitattributess
