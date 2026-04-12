@@ -24,7 +24,7 @@ function getCertificatePath(filename) {
   return '';
 }
 
-function About() {
+function About({ houseTheme }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [visibleElements, setVisibleElements] = useState(new Set());
   const [counters, setCounters] = useState({ projects: 0, satisfaction: 0, experience: 0 });
@@ -35,6 +35,13 @@ function About() {
   const [loading, setLoading] = useState(true);
   const sectionRef = useRef(null);
   const elementsRef = useRef([]);
+
+  const houseStyles = {
+    Gryffindor: { color: '#740001', accent: '#D4AF37', text: '#f4e4bc', glow: 'rgba(116, 0, 1, 0.4)' },
+    Slytherin: { color: '#1A472A', accent: '#AAAAAA', text: '#e5e2e1', glow: 'rgba(26, 71, 42, 0.4)' },
+    Hufflepuff: { color: '#ECB939', accent: '#000000', text: '#f4e4bc', glow: 'rgba(236, 185, 57, 0.2)' },
+    Ravenclaw: { color: '#0E1A40', accent: '#946B2D', text: '#e5e2e1', glow: 'rgba(14, 26, 64, 0.4)' }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -151,13 +158,15 @@ function About() {
     { icon: Coffee, label: "Continuous Learning", color: "text-amber-400" }
   ];
 
+  const currentHouse = houseStyles[houseTheme] || houseStyles.Gryffindor;
+
   return (
     <section id="about" ref={sectionRef} className="py-32 relative overflow-hidden bg-transparent">
       {/* Celestial Background Layers */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 transition-all duration-1000"
         style={{
-          background: `radial-gradient(circle at ${50 + scrollProgress * 20}% ${50 - scrollProgress * 10}%, rgba(212, 175, 55, 0.05) 0%, transparent 60%)`,
+          background: `radial-gradient(circle at ${50 + scrollProgress * 20}% ${50 - scrollProgress * 10}%, ${currentHouse.color}0D 0%, transparent 60%)`,
         }}
       ></div>
 
@@ -170,14 +179,14 @@ function About() {
             transform: `translateY(${scrollProgress * -50}px)`
           }}
         >
-          <div className="inline-flex items-center px-6 py-2 rounded-full glass-panel border-[#D4AF37]/20 mb-8">
-            <Sparkles className="w-4 h-4 text-[#D4AF37] mr-3" />
-            <span className="text-xs font-bold tracking-[0.4em] text-[#d0c5af] uppercase font-cinzel">The Archivist's Origin</span>
+          <div className="inline-flex items-center px-6 py-2 rounded-full glass-panel border-[#D4AF37]/20 mb-8" style={{ borderColor: `${currentHouse.accent}33` }}>
+            <Sparkles className="w-4 h-4 mr-3" style={{ color: currentHouse.accent }} />
+            <span className="text-xs font-bold tracking-[0.4em] uppercase font-cinzel" style={{ color: currentHouse.text }}>The Archivist's Origin</span>
           </div>
-          <h2 className="text-7xl md:text-8xl text-white font-cinzel tracking-tight leading-none mb-6">
-            The <span className="text-reveal glow-gold">Manifestation</span>
+          <h2 className="text-7xl md:text-8xl text-white font-harry tracking-tight leading-none mb-6">
+            The <span className="text-reveal transition-all duration-1000" style={{ backgroundImage: `linear-gradient(to right, ${currentHouse.accent}, ${currentHouse.text})`, textShadow: `0 0 20px ${currentHouse.accent}66` }}>Manifestation</span>
           </h2>
-          <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto"></div>
+          <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto" style={{ backgroundImage: `linear-gradient(to right, transparent, ${currentHouse.accent}, transparent)` }}></div>
           <p className="text-xl text-[#99907c] mt-10 max-w-2xl mx-auto font-serif italic">
             "A weaver of code, a dreamer of designs, and a relentless pursuer of digital perfection in the celestial void."
           </p>
@@ -194,10 +203,10 @@ function About() {
             {/* Profile Image - The Soul Image */}
             <div className="relative group">
               {/* Rotating Celestial Orbit */}
-              <div className="absolute -inset-10 rounded-full border border-[#D4AF37]/10 animate-spin-slow pointer-events-none"></div>
-              <div className="absolute -inset-20 rounded-full border border-white/5 animate-reverse-spin pointer-events-none" style={{ animationDuration: '40s' }}></div>
+              <div className="absolute -inset-10 rounded-full border border-white/5 animate-spin-slow pointer-events-none" style={{ borderColor: `${currentHouse.accent}1A` }}></div>
+              <div className="absolute -inset-20 rounded-full border border-white/5 animate-reverse-spin pointer-events-none" style={{ animationDuration: '40s', borderColor: `${currentHouse.color}1A` }}></div>
 
-              <div className="relative aspect-square max-w-md mx-auto rounded-full p-2 glass-panel border-[#D4AF37]/30 shadow-[0_0_50px_rgba(212,175,55,0.1)] overflow-hidden group-hover:scale-105 transition-all duration-700">
+              <div className="relative aspect-square max-w-md mx-auto rounded-full p-2 glass-panel border-white/10 shadow-[0_0_50px_rgba(212,175,55,0.1)] overflow-hidden group-hover:scale-105 transition-all duration-700" style={{ borderColor: `${currentHouse.accent}4D`, boxShadow: `0 0 50px ${currentHouse.accent}1A` }}>
                 <div className="w-full h-full rounded-full overflow-hidden">
                   <img
                     src={AaryanImage}
@@ -211,9 +220,9 @@ function About() {
               </div>
 
               {/* Floating Stat Medallions */}
-              <div className="absolute -bottom-10 -right-10 glass-panel-heavy p-6 rounded-3xl border-[#D4AF37]/30 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 box-glow-gold">
-                <div className="text-4xl font-harry text-[#D4AF37] mb-1">{counters.experience}+</div>
-                <div className="text-[10px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel">Eons of Dev</div>
+              <div className="absolute -bottom-10 -right-10 glass-panel-heavy p-6 rounded-3xl border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500" style={{ borderColor: `${currentHouse.accent}4D`, boxShadow: `0 0 20px ${currentHouse.accent}33` }}>
+                <div className="text-4xl font-harry mb-1" style={{ color: currentHouse.accent }}>{counters.experience}+</div>
+                <div className="text-[10px] font-bold tracking-[0.2em] uppercase font-cinzel" style={{ color: currentHouse.text }}>Eons of Dev</div>
               </div>
             </div>
           </div>
@@ -227,11 +236,11 @@ function About() {
             <div className="space-y-8">
               <h3 className="text-5xl text-white font-cinzel leading-tight tracking-tight">
                 Architect of the <br />
-                <span className="text-reveal glow-gold">Digital Aether</span>
+                <span className="text-reveal transition-all duration-1000" style={{ backgroundImage: `linear-gradient(to right, ${currentHouse.accent}, ${currentHouse.text})`, textShadow: `0 0 15px ${currentHouse.accent}66` }}>Digital Aether</span>
               </h3>
 
               <div className="space-y-6 text-[#d0c5af] text-lg font-serif italic leading-relaxed">
-                <p className="border-l-2 border-[#D4AF37]/30 pl-8">
+                <p className="border-l-2 pl-8 transition-colors duration-1000" style={{ borderColor: `${currentHouse.accent}4D` }}>
                   "In the beginning, there was code. Then came the structure. Now, there is only the seamless fusion of logic and beauty that I strive to create every single day."
                 </p>
                 <p className="pl-8 text-base not-italic text-[#99907c] font-sans">
@@ -242,16 +251,16 @@ function About() {
 
             {/* Stats - The Pillars of Merit */}
             <div className="grid grid-cols-2 gap-6">
-              <div className="glass-panel p-8 rounded-3xl border-white/5 hover:border-[#D4AF37]/40 transition-all group box-glow-gold">
-                <Rocket className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:animate-bounce" />
+              <div className="glass-panel p-8 rounded-3xl border-white/5 hover:border-[#D4AF37]/40 transition-all group box-glow-gold" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                <Rocket className="w-10 h-10 mb-4 group-hover:animate-bounce" style={{ color: currentHouse.accent }} />
                 <div className="text-5xl font-harry text-white">{counters.projects}+</div>
-                <div className="text-[10px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel mt-2">Relics Forged</div>
+                <div className="text-[10px] font-bold tracking-[0.2em] uppercase font-cinzel mt-2" style={{ color: currentHouse.text }}>Relics Forged</div>
               </div>
 
-              <div className="glass-panel p-8 rounded-3xl border-white/5 hover:border-[#D4AF37]/40 transition-all group box-glow-gold">
-                <Star className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:rotate-45 transition-transform" fill="currentColor" />
+              <div className="glass-panel p-8 rounded-3xl border-white/5 hover:border-[#D4AF37]/40 transition-all group box-glow-gold" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                <Star className="w-10 h-10 mb-4 group-hover:rotate-45 transition-transform" fill="currentColor" style={{ color: currentHouse.accent }} />
                 <div className="text-5xl font-harry text-white">{counters.satisfaction}%</div>
-                <div className="text-[10px] font-bold text-[#d0c5af] tracking-[0.2em] uppercase font-cinzel mt-2">Favor of Gods</div>
+                <div className="text-[10px] font-bold tracking-[0.2em] uppercase font-cinzel mt-2" style={{ color: currentHouse.text }}>Favor of Gods</div>
               </div>
             </div>
           </div>
@@ -264,12 +273,12 @@ function About() {
         >
           {/* Section Header */}
           <div className="text-center mb-20 space-y-4">
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-panel border-[#D4AF37]/20">
-              <Code2 className="w-4 h-4 text-[#D4AF37] mr-3" />
-              <span className="text-[10px] font-bold tracking-[0.3em] text-[#d0c5af] uppercase font-cinzel">The Competitive Ranks</span>
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-panel border-white/10" style={{ borderColor: `${currentHouse.accent}33` }}>
+              <Code2 className="w-4 h-4 mr-3" style={{ color: currentHouse.accent }} />
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase font-cinzel" style={{ color: currentHouse.text }}>The Competitive Ranks</span>
             </div>
-            <h3 className="text-5xl md:text-6xl text-white font-cinzel tracking-tight leading-none">
-              Guild <span className="text-reveal glow-gold"> standings</span>
+            <h3 className="text-5xl md:text-6xl text-white font-harry tracking-tight leading-none">
+              Guild <span className="text-reveal transition-all duration-1000" style={{ backgroundImage: `linear-gradient(to right, ${currentHouse.accent}, ${currentHouse.text})`, textShadow: `0 0 15px ${currentHouse.accent}66` }}> standings</span>
             </h3>
           </div>
 
@@ -289,16 +298,16 @@ function About() {
                     style={{ transitionDelay: `${index * 200}ms` }}
                   >
                     {/* Shadow/Glow Background */}
-                    <div className="absolute -inset-4 bg-[#D4AF37]/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div className="absolute -inset-4 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: `${currentHouse.accent}0D` }}></div>
 
-                    <div className="relative w-[300px] h-[380px] archive-card rounded-3xl p-8 border-white/5 group-hover:border-[#D4AF37]/40 transition-all duration-700 overflow-hidden box-glow-gold">
+                    <div className="relative w-[300px] h-[380px] archive-card rounded-3xl p-8 border-white/5 group-hover:border-[#D4AF37]/40 transition-all duration-700 overflow-hidden box-glow-gold" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
                       {/* Platform Emoji Background */}
                       <div className="absolute -right-8 -top-8 text-[180px] opacity-[0.03] group-hover:opacity-[0.07] transition-all duration-1000 rotate-12 group-hover:rotate-0">
                         {profile.emoji || '💻'}
                       </div>
 
                       <div className="relative z-10 flex flex-col h-full">
-                        <div className="w-20 h-20 glass-panel-heavy rounded-2xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition-transform duration-500 border-[#D4AF37]/20 shadow-xl">
+                        <div className="w-20 h-20 glass-panel-heavy rounded-2xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition-all duration-500 border-white/10 shadow-xl" style={{ borderColor: `${currentHouse.accent}33` }}>
                           {profile.emoji || '💻'}
                         </div>
 
@@ -316,14 +325,14 @@ function About() {
                           {profile.stats && Object.entries(profile.stats).slice(0, 3).map(([key, value], idx) => (
                             <div key={key} className="flex justify-between items-center group/stat">
                               <span className="text-[10px] font-bold text-[#99907c] tracking-[0.2em] uppercase font-cinzel group-hover/stat:text-[#d0c5af] transition-colors">{key}</span>
-                              <span className="text-xl font-harry text-[#D4AF37]">{value}</span>
+                              <span className="text-xl font-harry" style={{ color: currentHouse.accent }}>{value}</span>
                             </div>
                           ))}
                         </div>
 
                         <div className="pt-8 border-t border-white/5 flex items-center justify-between group-hover:pt-6 transition-all duration-500">
-                          <span className="text-[10px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase font-cinzel opacity-0 group-hover:opacity-100 transition-opacity">Enter Profile</span>
-                          <ExternalLink className="w-4 h-4 text-[#D4AF37] transform translate-y-1 group-hover:translate-y-0 transition-transform" />
+                          <span className="text-[10px] font-bold tracking-[0.2em] uppercase font-cinzel opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: currentHouse.accent }}>Enter Profile</span>
+                          <ExternalLink className="w-4 h-4 transform translate-y-1 group-hover:translate-y-0 transition-transform" style={{ color: currentHouse.accent }} />
                         </div>
                       </div>
                     </div>
@@ -338,12 +347,12 @@ function About() {
         {achievements.length > 0 && (
           <div className="mb-40 relative">
             <div className="text-center mb-24 space-y-4">
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-panel border-[#D4AF37]/20">
-                <Trophy className="w-4 h-4 text-[#D4AF37] mr-3" />
-                <span className="text-[10px] font-bold tracking-[0.3em] text-[#d0c5af] uppercase font-cinzel">Hall of Eternal Fame</span>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-panel border-white/10" style={{ borderColor: `${currentHouse.accent}33` }}>
+                <Trophy className="w-4 h-4 mr-3" style={{ color: currentHouse.accent }} />
+                <span className="text-[10px] font-bold tracking-[0.3em] uppercase font-cinzel" style={{ color: currentHouse.text }}>Hall of Eternal Fame</span>
               </div>
-              <h3 className="text-5xl md:text-6xl text-white font-cinzel tracking-tight leading-none">
-                Artifacts of <span className="text-reveal glow-gold"> Merit</span>
+              <h3 className="text-5xl md:text-6xl text-white font-harry tracking-tight leading-none">
+                Artifacts of <span className="text-reveal transition-all duration-1000" style={{ backgroundImage: `linear-gradient(to right, ${currentHouse.accent}, ${currentHouse.text})`, textShadow: `0 0 15px ${currentHouse.accent}66` }}> Merit</span>
               </h3>
             </div>
 
@@ -355,18 +364,19 @@ function About() {
                   <div
                     key={achievement.id}
                     className="group relative archive-card p-10 border-white/5 hover:border-[#D4AF37]/40 rounded-[2.5rem] transition-all duration-700 hover:-translate-y-4 box-glow-gold"
+                    style={{ borderColor: 'rgba(255,255,255,0.05)' }}
                   >
                     <div className="relative z-10 space-y-8">
                       <div className="flex justify-between items-center">
-                        <div className="w-16 h-16 glass-panel-heavy rounded-2xl flex items-center justify-center border-[#D4AF37]/20">
-                          <IconComponent className="w-8 h-8 text-[#D4AF37]" />
+                        <div className="w-16 h-16 glass-panel-heavy rounded-2xl flex items-center justify-center border-white/10" style={{ borderColor: `${currentHouse.accent}33` }}>
+                          <IconComponent className="w-8 h-8" style={{ color: currentHouse.accent }} />
                         </div>
                         <span className="text-[10px] text-[#99907c] font-bold tracking-[0.2em] uppercase font-cinzel">{achievement.date}</span>
                       </div>
 
                       <div className="space-y-4">
                         <h4 className="text-2xl font-cinzel text-white leading-tight">{achievement.title}</h4>
-                        <p className="text-base text-[#99907c] leading-relaxed font-serif italic border-l border-[#D4AF37]/20 pl-6">
+                        <p className="text-base text-[#99907c] leading-relaxed font-serif italic border-l pl-6 transition-all duration-1000" style={{ borderColor: `${currentHouse.accent}33` }}>
                           {achievement.description}
                         </p>
                       </div>
@@ -374,13 +384,14 @@ function About() {
                       {achievement.certificateImage && (
                         <button
                           onClick={() => setSelectedCertificate(achievement)}
-                          className="w-full py-4 glass-panel border-[#D4AF37]/20 text-[#D4AF37] text-[10px] font-bold tracking-[0.3em] uppercase font-cinzel rounded-2xl hover:bg-[#D4AF37] hover:text-black transition-all duration-500 overflow-hidden relative group/btn"
+                          className="w-full py-4 glass-panel border-white/10 text-[10px] font-bold tracking-[0.3em] uppercase font-cinzel rounded-2xl transition-all duration-500 overflow-hidden relative group/btn"
+                          style={{ borderColor: `${currentHouse.accent}33`, color: currentHouse.accent }}
                         >
                           <span className="relative z-10 flex items-center justify-center gap-3">
                             <Sparkles className="w-3.5 h-3.5" />
                             Examine Artifact
                           </span>
-                          <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 opacity-10"></div>
+                          <div className="absolute inset-0 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 opacity-10" style={{ background: currentHouse.accent }}></div>
                         </button>
                       )}
                     </div>
@@ -395,11 +406,11 @@ function About() {
       {/* Certificate Modal - The Sanctum of Truth */}
       {selectedCertificate && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#050505]/95 backdrop-blur-2xl transition-all duration-500 animate-fade-in-up">
-          <div className="relative max-w-5xl w-full archive-card p-2 rounded-3xl border-[#D4AF37]/30 shadow-[0_0_100px_rgba(212,175,55,0.2)]">
+          <div className="relative max-w-5xl w-full archive-card p-2 rounded-3xl border-white/10 shadow-[0_0_100px_rgba(212,175,55,0.2)]" style={{ borderColor: `${currentHouse.accent}4D`, boxShadow: `0 0 100px ${currentHouse.accent}33` }}>
             <div className="flex justify-between items-center p-8 bg-transparent">
               <div className="space-y-1">
                 <h3 className="text-2xl font-cinzel text-white">{selectedCertificate.title}</h3>
-                <p className="text-[10px] text-[#D4AF37] tracking-[0.4em] uppercase">Document of Merit</p>
+                <p className="text-[10px] tracking-[0.4em] uppercase" style={{ color: currentHouse.accent }}>Document of Merit</p>
               </div>
               <button
                 onClick={() => setSelectedCertificate(null)}

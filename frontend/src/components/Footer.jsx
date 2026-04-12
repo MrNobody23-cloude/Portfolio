@@ -1,25 +1,33 @@
 import React from 'react';
 import { Github, Linkedin, Mail, ArrowUp, Heart, Rocket } from 'lucide-react';
 
-function Footer() {
+function Footer({ houseTheme }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return (
+  const houseStyles = {
+    Gryffindor: { color: '#740001', accent: '#D4AF37', text: '#f4e4bc', glow: 'rgba(116, 0, 1, 0.4)' },
+    Slytherin: { color: '#1A472A', accent: '#AAAAAA', text: '#e5e2e1', glow: 'rgba(26, 71, 42, 0.4)' },
+    Hufflepuff: { color: '#ECB939', accent: '#000000', text: '#f4e4bc', glow: 'rgba(236, 185, 57, 0.2)' },
+    Ravenclaw: { color: '#0E1A40', accent: '#946B2D', text: '#e5e2e1', glow: 'rgba(14, 26, 64, 0.4)' }
+  };
 
-    <footer className="relative py-24 overflow-hidden bg-transparent border-t border-white/5">
+  const currentHouse = houseStyles[houseTheme] || houseStyles.Gryffindor;
+
+  return (
+    <footer className="relative py-24 overflow-hidden bg-transparent border-t border-white/5" style={{ borderTopColor: `${currentHouse.accent}1A` }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid md:grid-cols-4 gap-16 mb-20">
           
           {/* Brand - The Archivist Label */}
           <div className="md:col-span-2 space-y-8">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 glass-panel-heavy rounded-2xl flex items-center justify-center border-[#D4AF37]/20 box-glow-gold">
-                <Rocket className="w-6 h-6 text-[#D4AF37]" />
+              <div className="w-12 h-12 glass-panel-heavy rounded-2xl flex items-center justify-center border-[#D4AF37]/20 box-glow-gold" style={{ borderColor: `${currentHouse.accent}33`, boxShadow: `0 0 20px ${currentHouse.accent}33` }}>
+                <Rocket className="w-6 h-6" style={{ color: currentHouse.accent }} />
               </div>
               <div>
-                <h3 className="text-3xl text-white font-cinzel leading-none tracking-tighter">Aaryan <span className="text-[#D4AF37]">Patel</span></h3>
+                <h3 className="text-3xl text-white font-cinzel leading-none tracking-tighter">Aaryan <span className="transition-colors duration-1000" style={{ color: currentHouse.accent }}>Patel</span></h3>
                 <p className="text-[10px] font-bold text-[#99907c] tracking-[0.4em] uppercase font-cinzel mt-2">Celestial Archivist</p>
               </div>
             </div>
@@ -47,7 +55,7 @@ function Footer() {
 
           {/* Navigation - The Gilded Pathways */}
           <div className="space-y-8">
-            <h4 className="text-[10px] font-bold text-[#D4AF37] tracking-[0.4em] uppercase font-cinzel">Pathways</h4>
+            <h4 className="text-[10px] font-bold tracking-[0.4em] uppercase font-cinzel" style={{ color: currentHouse.accent }}>Pathways</h4>
             <ul className="space-y-4">
               {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
                 <li key={item}>
@@ -55,7 +63,7 @@ function Footer() {
                     href={`#${item.toLowerCase()}`} 
                     className="text-[#99907c] hover:text-[#D4AF37] transition-all duration-500 font-cinzel text-sm tracking-widest flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-4 h-[1px] bg-[#D4AF37] mr-0 group-hover:mr-3 transition-all duration-500"></span>
+                    <span className="w-0 group-hover:w-4 h-[1px] mr-0 group-hover:mr-3 transition-all duration-500" style={{ background: currentHouse.accent }}></span>
                     {item}
                   </a>
                 </li>
@@ -65,7 +73,7 @@ function Footer() {
 
           {/* Direct Pulse - The Quick Reach */}
           <div className="space-y-8">
-            <h4 className="text-[10px] font-bold text-[#D4AF37] tracking-[0.4em] uppercase font-cinzel">Quick Reach</h4>
+            <h4 className="text-[10px] font-bold tracking-[0.4em] uppercase font-cinzel" style={{ color: currentHouse.accent }}>Quick Reach</h4>
             <p className="text-[#99907c] font-serif italic leading-relaxed">
               Open to cosmic collaborations and architectural explorations.
             </p>
@@ -79,17 +87,17 @@ function Footer() {
         </div>
 
         {/* Bottom Bar - The Final Seal */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8" style={{ borderTopColor: 'rgba(255,255,255,0.05)' }}>
           <p className="text-[10px] font-bold text-[#666] tracking-[0.3em] uppercase font-cinzel flex items-center">
-            © {new Date().getFullYear()} <span className="text-[#D4AF37] mx-2">Aaryan Patel</span> • Sealed with <Heart className="w-3 h-3 text-[#740001] mx-2 animate-pulse" /> across the eons
+            © {new Date().getFullYear()} <span className="mx-2" style={{ color: currentHouse.accent }}>Aaryan Patel</span> • Sealed with <Heart className="w-3 h-3 text-[#740001] mx-2 animate-pulse" /> across the eons
           </p>
           
           <button
             onClick={scrollToTop}
             className="group relative flex flex-col items-center gap-3"
           >
-            <div className="w-14 h-14 glass-panel-heavy rounded-full flex items-center justify-center border-[#D4AF37]/20 group-hover:border-[#D4AF37] transition-all duration-700 box-glow-gold hover:scale-110">
-              <ArrowUp className="w-5 h-5 text-[#D4AF37] group-hover:-translate-y-1 transition-transform" />
+            <div className="w-14 h-14 glass-panel-heavy rounded-full flex items-center justify-center border-[#D4AF37]/20 group-hover:border-[#D4AF37] transition-all duration-700 box-glow-gold hover:scale-110" style={{ borderColor: `${currentHouse.accent}33`, boxShadow: `0 0 20px ${currentHouse.accent}33` }}>
+              <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" style={{ color: currentHouse.accent }} />
             </div>
             <span className="text-[8px] font-bold text-[#99907c] tracking-[0.4em] uppercase font-cinzel opacity-0 group-hover:opacity-100 transition-opacity">Return to Origin</span>
           </button>
@@ -97,11 +105,10 @@ function Footer() {
       </div>
       
       {/* Decorative Final Rune */}
-      <div className="absolute -bottom-20 -right-20 text-[300px] font-harry text-[#D4AF37]/5 pointer-events-none select-none rotate-12">
+      <div className="absolute -bottom-20 -right-20 text-[300px] font-harry pointer-events-none select-none rotate-12" style={{ color: `${currentHouse.accent}0D` }}>
         Fin
       </div>
     </footer>
-
   );
 }
 

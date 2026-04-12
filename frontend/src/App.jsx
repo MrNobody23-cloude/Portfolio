@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,9 +9,25 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import GhostCursor from './components/GhostCursor';
 
+const houseStyles = {
+  Gryffindor: { color: '#740001', accent: '#D4AF37', text: '#f4e4bc', glow: 'rgba(116, 0, 1, 0.4)' },
+  Slytherin: { color: '#1A472A', accent: '#AAAAAA', text: '#e5e2e1', glow: 'rgba(26, 71, 42, 0.4)' },
+  Hufflepuff: { color: '#ECB939', accent: '#000000', text: '#f4e4bc', glow: 'rgba(236, 185, 57, 0.2)' },
+  Ravenclaw: { color: '#0E1A40', accent: '#946B2D', text: '#e5e2e1', glow: 'rgba(14, 26, 64, 0.4)' }
+};
+
 function App() {
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [houseTheme, setHouseTheme] = useState(() => {
+    return localStorage.getItem('houseTheme') || 'Gryffindor';
+  });
+
+  const activeStyle = useMemo(() => houseStyles[houseTheme], [houseTheme]);
+
+  useEffect(() => {
+    localStorage.setItem('houseTheme', houseTheme);
+  }, [houseTheme]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +50,22 @@ function App() {
     };
   }, []);
 
+  const toggleTheme = () => {
+    const themes = ['Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw'];
+    const currentIndex = themes.indexOf(houseTheme);
+    setHouseTheme(currentIndex === 3 ? themes[0] : themes[currentIndex + 1]);
+  };
+
   return (
-    <div className="bg-[#050505] relative overflow-hidden min-h-screen selection:bg-[#D4AF37]/30 selection:text-white">
+    <div 
+      className="bg-[#050505] relative overflow-hidden min-h-screen selection:bg-[var(--accent-color)]/30 selection:text-white transition-colors duration-1000"
+      style={{
+        '--house-color': activeStyle.color,
+        '--accent-color': activeStyle.accent,
+        '--text-theme': activeStyle.text,
+        '--glow-color': activeStyle.glow,
+      }}
+    >
       {/* Celestial Background Layers */}
       <div className="starfield-v2">
         <div className="stars-v2"></div>
@@ -51,28 +81,36 @@ function App() {
 
         {/* Nebula Glows */}
         <div
-          className="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] rounded-full bg-[#740001]/[0.05] blur-[120px] pointer-events-none"
-          style={{ transform: `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)` }}
+          className="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] rounded-full blur-[120px] pointer-events-none transition-all duration-1000"
+          style={{ 
+            background: `var(--house-color)`,
+            opacity: 0.05,
+            transform: `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)` 
+          }}
         ></div>
         <div
-          className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-[#D4AF37]/[0.03] blur-[100px] pointer-events-none"
-          style={{ transform: `translate(${mousePosition.x * -0.03}px, ${mousePosition.y * -0.03}px)` }}
+          className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] rounded-full blur-[100px] pointer-events-none transition-all duration-1000"
+          style={{ 
+            background: `var(--accent-color)`,
+            opacity: 0.03,
+            transform: `translate(${mousePosition.x * -0.03}px, ${mousePosition.y * -0.03}px)` 
+          }}
         ></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10">
-        <GhostCursor />
-        <Navigation />
+        <GhostCursor color={activeStyle.accent} />
+        <Navigation houseTheme={houseTheme} />
         <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Contact />
+          <Hero houseTheme={houseTheme} toggleTheme={toggleTheme} />
+          <About houseTheme={houseTheme} />
+          <Skills houseTheme={houseTheme} />
+          <Projects houseTheme={houseTheme} />
+          <Experience houseTheme={houseTheme} />
+          <Contact houseTheme={houseTheme} />
         </main>
-        <Footer />
+        <Footer houseTheme={houseTheme} />
       </div>
     </div>
   );

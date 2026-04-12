@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, Wand2, ArrowRight, Download, Mail, Github, Linkedin, BookOpen, Star, Flame, ScrollText, ShieldCheck, Landmark } from 'lucide-react';
 import AaryanPatel_Resume from '../MyInfo/AaryanPatel_Resume.pdf';
 
-const Hero = () => {
+const Hero = ({ houseTheme, toggleTheme }) => {
   const scrollTo = (id) => {
     window.scrollTo({ top: id, behavior: 'smooth' });
   };
-  const [houseTheme, setHouseTheme] = useState('Gryffindor');
   const [scrollPresence, setScrollPresence] = useState(0);
   const [activeSeal, setActiveSeal] = useState(null);
 
@@ -26,12 +25,6 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = () => {
-    const themes = ['Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw'];
-    const currentIndex = themes.indexOf(houseTheme);
-    setHouseTheme(currentIndex === 3 ? themes[0] : themes[currentIndex + 1]);
-  };
-
   return (
     <section id="hero" className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center py-20 px-6 bg-[#050505] transition-all duration-1000">
 
@@ -42,8 +35,14 @@ const Hero = () => {
       {/* Ambient Depth (Parallax Ink Smudges) */}
       <div className="absolute inset-0 pointer-events-none transition-transform duration-500 ease-out z-0 opacity-20"
         style={{ transform: `translateY(${scrollPresence * 0.15}px)` }}>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#740001] rounded-full blur-[180px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#D4AF37] opacity-40 rounded-full blur-[180px] animate-pulse delay-1000"></div>
+        <div 
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[180px] animate-pulse transition-colors duration-1000"
+          style={{ background: houseStyles[houseTheme].color }}
+        ></div>
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 opacity-40 rounded-full blur-[180px] animate-pulse delay-1000 transition-colors duration-1000"
+          style={{ background: houseStyles[houseTheme].accent }}
+        ></div>
       </div>
 
 
@@ -60,11 +59,16 @@ const Hero = () => {
             <button
               onClick={toggleTheme}
               className="group relative w-14 h-14 rounded-full glass-panel border-[#D4AF37]/30 flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+              style={{ borderColor: `${houseStyles[houseTheme].accent}30` }}
             >
-              <Wand2 className="w-6 h-6 text-[#D4AF37] group-hover:rotate-12 transition-transform" />
-              <div className="absolute -inset-1 border border-[#D4AF37]/10 rounded-full animate-spin-slow"></div>
+              <Wand2 className="w-6 h-6 transition-transform" style={{ color: houseStyles[houseTheme].accent }} />
+              <div 
+                className="absolute -inset-1 border rounded-full animate-spin-slow"
+                style={{ borderColor: `${houseStyles[houseTheme].accent}10` }}
+              ></div>
               {/* Tooltip */}
-              <span className="absolute right-full mr-4 px-3 py-1 bg-[#1a1a1a] border border-[#D4AF37]/20 text-[#f4e4bc] font-cinzel text-[8px] font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <span className="absolute right-full mr-4 px-3 py-1 bg-[#1a1a1a] border border-[#D4AF37]/20 text-[#f4e4bc] font-cinzel text-[8px] font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                style={{ borderColor: `${houseStyles[houseTheme].accent}20`, color: houseStyles[houseTheme].text }}>
                 Switch Resonance: {houseTheme}
               </span>
             </button>
@@ -83,11 +87,17 @@ const Hero = () => {
               >
                 Aaryan Patel
               </h1>
-              <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mt-4 opacity-30 group-hover:opacity-100 transition-opacity"></div>
+              <div 
+                className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mt-4 opacity-30 group-hover:opacity-100 transition-all duration-500"
+                style={{ backgroundImage: `linear-gradient(to right, transparent, ${houseStyles[houseTheme].accent}, transparent)` }}
+              ></div>
             </div>
 
             <div className="flex items-center gap-6 justify-center sm:justify-start">
-              <p className="text-3xl sm:text-4xl font-cinzel font-bold tracking-[0.4em] uppercase text-[#D4AF37] glow-gold">Digital Curator</p>
+              <p 
+                className="text-3xl sm:text-4xl font-harry font-bold tracking-[0.4em] uppercase transition-all duration-1000"
+                style={{ color: houseStyles[houseTheme].accent, textShadow: `0 0 15px ${houseStyles[houseTheme].accent}60` }}
+              >Digital Curator</p>
               <div className="flex-1 h-[1px] bg-white/5 hidden sm:block"></div>
             </div>
           </div>
@@ -105,6 +115,7 @@ const Hero = () => {
                   href={AaryanPatel_Resume}
                   download
                   className="flex items-center gap-4 px-12 py-7 border border-white/10 text-[#f4e4bc] font-serif uppercase text-[10px] tracking-[0.5em] hover:bg-white/5 transition-all shadow-xl"
+                  style={{ color: houseStyles[houseTheme].text }}
                 >
                   <Download className="w-5 h-5 opacity-40" />
                   Download Resume
@@ -114,7 +125,10 @@ const Hero = () => {
 
             {/* Side Stamps/Metadata */}
             <div className="flex flex-col gap-8 opacity-40 items-center lg:items-end sm:text-right hidden sm:flex">
-              <div className="w-32 h-32 border-2 border-dashed border-[#D4AF37]/40 rounded-full flex items-center justify-center rotate-12">
+              <div 
+                className="w-32 h-32 border-2 border-dashed rounded-full flex items-center justify-center rotate-12 transition-colors duration-1000"
+                style={{ borderColor: `${houseStyles[houseTheme].accent}40` }}
+              >
                 <span className="font-cinzel text-[7px] text-center tracking-widest uppercase">Verified by<br />Archmage <br />Aaryan Patel</span>
               </div>
             </div>
@@ -135,19 +149,37 @@ const Hero = () => {
                   className="w-20 h-20 bg-[#1a0f08] border-2 border-white/10 rounded-full flex items-center justify-center shadow-2xl transition-all duration-700 group-hover:scale-110 group-hover:rotate-6 overflow-hidden relative"
                   style={{ borderLeftColor: houseStyles[houseTheme].color, borderTopColor: houseStyles[houseTheme].color }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#740001]/20 to-transparent"></div>
-                  <seal.icon className="w-8 h-8 transition-colors duration-500" style={{ color: activeSeal === seal.id ? '#D4AF37' : '#D4AF3750' }} />
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent opacity-20"
+                    style={{ backgroundImage: `linear-gradient(to bottom right, ${houseStyles[houseTheme].color}, transparent)` }}
+                  ></div>
+                  <seal.icon className="w-8 h-8 transition-colors duration-500" style={{ color: activeSeal === seal.id ? houseStyles[houseTheme].accent : `${houseStyles[houseTheme].accent}50` }} />
                   {/* Interaction Glow */}
-                  <div className={`absolute inset-0 bg-[#D4AF37]/10 transition-opacity ${activeSeal === seal.id ? 'opacity-100' : 'opacity-0'}`}></div>
+                  <div 
+                    className={`absolute inset-0 transition-opacity ${activeSeal === seal.id ? 'opacity-100' : 'opacity-0'}`}
+                    style={{ background: `${houseStyles[houseTheme].accent}10` }}
+                  ></div>
                 </div>
 
-                <p className="mt-4 font-harry text-xl text-[#D4AF37] text-center tracking-widest group-hover:text-white transition-colors uppercase">{seal.label}</p>
+                <p 
+                  className="mt-4 font-harry text-xl text-center tracking-widest group-hover:text-white transition-all uppercase"
+                  style={{ color: houseStyles[houseTheme].accent }}
+                >{seal.label}</p>
 
                 {/* Floating Memory Scroll */}
-                <div className={`absolute bottom-full left-1/2 -translate-x-1/2 w-48 mb-8 p-5 bg-[#131313] border border-[#D4AF37]/30 rounded-sm shadow-[0_30px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-700 pointer-events-none
-                     ${activeSeal === seal.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                  <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#131313] border-r border-b border-[#D4AF37]/30 rotate-45"></div>
-                  <h4 className="font-harry text-xl text-[#D4AF37] mb-2">{seal.label}</h4>
+                <div 
+                  className={`absolute bottom-full left-1/2 -translate-x-1/2 w-48 mb-8 p-5 bg-[#131313] border rounded-sm shadow-[0_30px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-700 pointer-events-none
+                     ${activeSeal === seal.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ borderColor: `${houseStyles[houseTheme].accent}30` }}
+                >
+                  <div 
+                    className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#131313] border-r border-b rotate-45"
+                    style={{ borderColor: `${houseStyles[houseTheme].accent}30` }}
+                  ></div>
+                  <h4 
+                    className="font-harry text-xl mb-2"
+                    style={{ color: houseStyles[houseTheme].accent }}
+                  >{seal.label}</h4>
                   <p className="font-serif text-[11px] text-white/60 leading-relaxed italic">{seal.desc}</p>
                 </div>
               </div>
