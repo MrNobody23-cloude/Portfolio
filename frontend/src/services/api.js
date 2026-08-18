@@ -1,4 +1,18 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+function getApiBaseUrl() {
+    let raw = (import.meta.env.VITE_API_URL || '').trim();
+    if (!raw) {
+        return 'http://localhost:5000/api';
+    }
+    // Strip trailing slashes
+    raw = raw.replace(/\/+$/, '');
+    // Ensure /api is at the end if not already present
+    if (!raw.endsWith('/api')) {
+        raw = `${raw}/api`;
+    }
+    return raw;
+}
+
+const API_BASE_URL = getApiBaseUrl();
 
 // In-memory client cache to optimize window toggling
 const cache = new Map();
@@ -9,7 +23,8 @@ async function fetchWithCache(endpoint, options = {}) {
         return cache.get(cacheKey);
     }
 
-    const url = `${API_BASE_URL}${endpoint}`;
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    const url = `${API_BASE_URL}${cleanEndpoint}`;
     try {
         const res = await fetch(url, options);
         if (!res.ok) {
@@ -35,7 +50,7 @@ export const portfolioAPI = {
     getResume: (skipCache = false) => fetchWithCache('/resume', { skipCache }),
     getProfiles: (skipCache = false) => fetchWithCache('/profiles', { skipCache }),
 
-    checkHealth: async (timeoutMs = 4000) => {
+    checkHealth: async (timeoutMs = 15000) => {
         const url = `${API_BASE_URL}/health`;
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -45,13 +60,34 @@ export const portfolioAPI = {
                 cache: 'no-store'
             });
             clearTimeout(timer);
-            if (!res.ok) return false;
-            const data = await res.json();
-            return data && (data.status === 'ok' || Boolean(data.message));
+            if (res.ok) {
+                const data = await res.json();
+                return data && (data.status === 'ok' || Boolean(data.message));
+            }
         } catch (err) {
             clearTimeout(timer);
-            return false;
         }
+
+        // Secondary fallback check on root /health if /api/health is unavailable
+        const rootHealthUrl = API_BASE_URL.replace(/\/api\/?$/, '/health');
+        if (rootHealthUrl !== url) {
+            const controller2 = new AbortController();
+            const timer2 = setTimeout(() => controller2.abort(), 8000);
+            try {
+                const res2 = await fetch(rootHealthUrl, {
+                    signal: controller2.signal,
+                    cache: 'no-store'
+                });
+                clearTimeout(timer2);
+                if (res2.ok) {
+                    const data2 = await res2.json();
+                    return data2 && (data2.status === 'ok' || Boolean(data2.message));
+                }
+            } catch (err) {
+                clearTimeout(timer2);
+            }
+        }
+        return false;
     },
 
     sendContact: async (formData) => {
