@@ -1,35 +1,161 @@
 [
     {
-        "id": "1",
-        "title": "Equipment Health Monitoring System",
-        "description": "A web application for monitoring the health of various equipments, with real-time data visualization and alerting.",
-        "tags": [
+        "id": "janniti-ai",
+        "title": "JanNiti AI — Governance & Legislative Intelligence Platform",
+        "subtitle": "AI-Powered Civic Policy & Legislative Insights Engine",
+        "category": "AI / ML",
+        "description": "An AI platform enabling citizens and policy analysts to query legislative documents, track civic bills, summarize complex policy texts using LLMs, and visualize parliamentary insights.",
+        "problem": "Legislative documents and government bills are often hundreds of pages of complex legal jargon, making civic policy inaccessible to ordinary citizens and policy researchers.",
+        "solution": "JanNiti AI leverages LLM RAG pipelines to index legislative documents, providing instant natural-language Q&A, automatic bill summarization, and interactive policy dashboards.",
+        "features": [
+            "Retrieval-Augmented Generation (RAG) over official policy documents",
+            "Semantic Search & Multilingual Legislative Querying",
+            "Automatic Policy Risk & Impact Analysis Summarizer",
+            "Interactive Civic Analytics & Bill Progress Timeline"
+        ],
+        "technologies": [
+            "React",
+            "Node.js",
+            "Express",
+            "Python",
+            "LangChain",
+            "OpenAI",
+            "MongoDB",
+            "Tailwind CSS"
+        ],
+        "githubUrl": "https://github.com/MrNobody23-cloude/JanNitiAI",
+        "liveUrl": "https://janniti2678.vercel.app/",
+        "highlight": "Featured AI System",
+        "architectureNodes": [
+            {
+                "id": "client",
+                "label": "React Client UI",
+                "type": "frontend",
+                "details": "Vite + React SPA rendering responsive policy dashboards and chat interface."
+            },
+            {
+                "id": "gateway",
+                "label": "API Gateway",
+                "type": "gateway",
+                "details": "Express.js route controller handling CORS, rate limiting, and session tokens."
+            },
+            {
+                "id": "backend",
+                "label": "Node.js Server",
+                "type": "backend",
+                "details": "Core backend orchestrating document uploads, user authentication, and job queues."
+            },
+            {
+                "id": "ai-engine",
+                "label": "Python RAG Engine",
+                "type": "ai",
+                "details": "FastAPI service executing vector search with ChromaDB & OpenAI embeddings."
+            },
+            {
+                "id": "db",
+                "label": "MongoDB Store",
+                "type": "database",
+                "details": "Persistent document metadata, user profiles, and conversation logs."
+            }
+        ]
+    },
+    {
+        "id": "equiphealth",
+        "title": "EquipHealth — Equipment Health Monitoring System",
+        "subtitle": "Predictive Maintenance & Telemetry Analytics Platform",
+        "category": "Cloud / DevOps",
+        "description": "A web application for real-time monitoring of industrial equipment telemetry, predictive fault classification using ML models, and automated technician alerts with Google Maps integration.",
+        "problem": "Unplanned equipment downtime in industrial settings causes severe financial losses and safety hazards due to reactive maintenance strategies.",
+        "solution": "EquipHealth ingests sensor telemetry in real-time, runs ML anomaly detection algorithms, and predicts failure states before breakdown occurs.",
+        "features": [
+            "Real-time sensor telemetry dashboard",
+            "Machine Learning anomaly detection & predictive maintenance",
+            "Geospatial asset mapping with Google Maps API",
+            "Automated technician dispatch & threshold alerting"
+        ],
+        "technologies": [
             "React",
             "Node.js",
             "MongoDB",
-            "Machine Learning",
+            "Python",
+            "Scikit-Learn",
             "Google Maps API",
-            "Real-time Data"
+            "Express"
         ],
-        "imageUrl": "https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600",
-        "liveUrl": "https://equiphealth-23.web.app/",
         "githubUrl": "https://github.com/MrNobody23-cloude/equiphealth",
-        "highlight": "Machine Learning"
+        "liveUrl": "https://equiphealth-23.web.app/",
+        "highlight": "Machine Learning",
+        "architectureNodes": [
+            {
+                "id": "client",
+                "label": "React Telemetry UI",
+                "type": "frontend",
+                "details": "Live dashboard with charting and asset map markers."
+            },
+            {
+                "id": "backend",
+                "label": "Express Telemetry API",
+                "type": "backend",
+                "details": "Handles sensor payload ingestion and alert triggers."
+            },
+            {
+                "id": "ml",
+                "label": "Scikit-Learn Predictor",
+                "type": "ai",
+                "details": "ML classifier scoring equipment health scores."
+            },
+            {
+                "id": "db",
+                "label": "MongoDB TimeSeries",
+                "type": "database",
+                "details": "Stores historical telemetry data points and maintenance logs."
+            }
+        ]
     },
     {
-        "id": "2",
-        "title": "EduRights : Gamified Legal Awareness Platform for Children",
-        "description": "This project focuses on developing an interactive web platform that spreads legal awareness among children aged 8 to 16 through gamified learning. By simplifying key child rights and legal concepts into engaging visual and game-based activities, the platform makes learning intuitive and enjoyable, helping children understand their rights and encouraging early legal awareness.",
-        "tags": [
+        "id": "edurights",
+        "title": "EduRights — Gamified Legal Awareness Platform",
+        "subtitle": "Interactive Educational Platform for Child Rights",
+        "category": "Web",
+        "description": "An interactive web platform that spreads legal awareness among children aged 8 to 16 through gamified learning modules, interactive visual stories, and legal quizzes.",
+        "problem": "Child rights and legal protections are written in complex terms that children cannot easily understand or retain.",
+        "solution": "EduRights converts legal articles into story-driven interactive mini-games and visual cards, empowering children to understand their rights.",
+        "features": [
+            "Gamified learning modules with score tracking",
+            "Interactive scenario-based legal decision games",
+            "Accessible & colorful child-friendly UI",
+            "Progress analytics for educators and parents"
+        ],
+        "technologies": [
             "React",
             "Node.js",
             "MongoDB",
             "JavaScript",
-            "TypeScript"
+            "TypeScript",
+            "Tailwind CSS"
         ],
-        "imageUrl": "https://images.pexels.com/photos/34580/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600",
-        "liveUrl": " https://gamified-awarness-platform.vercel.app/",
         "githubUrl": "https://github.com/MrNobody23-cloude/Gamified_Awarness_Platform",
-        "highlight": "MERN Stack"
+        "liveUrl": "https://gamified-awarness-platform.vercel.app/",
+        "highlight": "MERN Stack",
+        "architectureNodes": [
+            {
+                "id": "client",
+                "label": "React Web App",
+                "type": "frontend",
+                "details": "Interactive canvas with game UI states."
+            },
+            {
+                "id": "backend",
+                "label": "Node.js REST Service",
+                "type": "backend",
+                "details": "User progress state and leaderboard API."
+            },
+            {
+                "id": "db",
+                "label": "MongoDB Database",
+                "type": "database",
+                "details": "Stores user profiles, achievements, and quest logs."
+            }
+        ]
     }
 ]

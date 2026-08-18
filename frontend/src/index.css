@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/harry-p');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
 @font-face {
   font-family: 'Harry P';
@@ -10,19 +10,41 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* =========================================================
+   AARYAN OS
+   HUMAN-CENTRIC PRODUCT DESIGN SYSTEM
+   Graphite / Warm Ivory / Brass / Olive / Terracotta
+   ========================================================= */
+
 @layer base {
+
   html {
     scroll-behavior: smooth;
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   body {
-    font-family: 'Crimson Text', 'Georgia', serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', sans-serif;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #050505;
-    color: #e5e2e1;
+
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+
     overflow-x: hidden;
     position: relative;
+
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease;
   }
 
   h1,
@@ -31,322 +53,1012 @@
   h4,
   h5,
   h6 {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.05em;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary);
   }
 
-  /* Force Harry P to look like specimen */
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  ::selection {
+    background: var(--color-accent-muted);
+    color: var(--color-text-primary);
+  }
+
+  /* Kept intentionally for compatibility.
+     Use this only for deliberate Easter eggs / fantasy elements. */
   .font-harry {
     font-family: 'Harry P', cursive;
     font-weight: 400 !important;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: none;
   }
 }
 
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
 @layer utilities {
+
   :root {
-    /* Celestial Palette */
-    --void-black: #050505;
-    --deep-space: #0e0e0e;
-    --stardust-gray: #201f1f;
 
-    --celestial-gold: #D4AF37;
-    --radiant-gold: #f2ca50;
-    --ancient-gold: #8B7500;
+    /* -----------------------------------------------------
+       CORE BACKGROUND
+       ----------------------------------------------------- */
 
-    --nebula-red: #740001;
-    --blood-red: #AE0001;
+    --color-bg-primary: #111311;
+    --color-bg-secondary: #171A17;
+    --color-bg-tertiary: #1D211D;
 
-    --text-divine: #e5e2e1;
-    --text-scholar: #d0c5af;
-    --text-muted: #99907c;
+    /* -----------------------------------------------------
+       SURFACES
+       ----------------------------------------------------- */
+
+    --color-surface-primary: #20241F;
+    --color-surface-secondary: #252A24;
+    --color-surface-elevated: #2B3029;
+
+    /* -----------------------------------------------------
+       BORDERS
+       ----------------------------------------------------- */
+
+    --color-border-subtle: rgba(224, 214, 187, 0.08);
+    --color-border-default: rgba(224, 214, 187, 0.14);
+    --color-border-strong: rgba(224, 214, 187, 0.23);
+    --color-border-active: rgba(184, 155, 94, 0.48);
+
+    /* -----------------------------------------------------
+       TYPOGRAPHY
+       ----------------------------------------------------- */
+
+    --color-text-primary: #E8E3D7;
+    --color-text-secondary: #C4BFAF;
+    --color-text-muted: #8E8D82;
+    --color-text-disabled: #62645D;
+
+    /* -----------------------------------------------------
+       BRAND / ACCENT
+       ----------------------------------------------------- */
+
+    --color-accent-primary: #B89B5E;
+    --color-accent-hover: #C9AD70;
+    --color-accent-active: #A6894E;
+    --color-accent-muted: rgba(184, 155, 94, 0.14);
+
+    /* -----------------------------------------------------
+       SUPPORTING COLORS
+       ----------------------------------------------------- */
+
+    --color-olive: #68745E;
+    --color-olive-soft: #7F8B73;
+    --color-olive-muted: rgba(104, 116, 94, 0.14);
+
+    --color-terracotta: #A96757;
+    --color-terracotta-soft: #B97A68;
+    --color-terracotta-muted: rgba(169, 103, 87, 0.14);
+
+    --color-brass: #B89B5E;
+    --color-warm-slate: #68706C;
+    --color-warm-taupe: #817A6B;
+    --color-dusty-blue: #73888A;
+    --color-warm-sand: #C9BEA5;
+
+    /* -----------------------------------------------------
+       STATUS
+       ----------------------------------------------------- */
+
+    --status-success: #7B9270;
+    --status-warning: #B28A52;
+    --status-error: #A9655D;
+    --status-info: #738C8C;
+
+    /* -----------------------------------------------------
+       SHADOW SYSTEM
+       ----------------------------------------------------- */
+
+    --shadow-sm:
+      0 2px 8px rgba(0, 0, 0, 0.18);
+
+    --shadow-md:
+      0 8px 24px rgba(0, 0, 0, 0.24);
+
+    --shadow-lg:
+      0 16px 42px rgba(0, 0, 0, 0.30);
+
+    --shadow-xl:
+      0 26px 70px rgba(0, 0, 0, 0.38);
+
+    --shadow-inset:
+      inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    /* -----------------------------------------------------
+       AMBIENT LIGHT
+       ----------------------------------------------------- */
+
+    --ambient-light:
+      radial-gradient(circle at 50% -10%,
+        rgba(184, 155, 94, 0.055),
+        transparent 42%);
+
+    /* -----------------------------------------------------
+       COMPATIBILITY VARIABLES
+       -----------------------------------------------------
+       Existing components may depend on these names.
+       They intentionally remain available.
+       ----------------------------------------------------- */
+
+    --void-black: var(--color-bg-primary);
+    --deep-space: var(--color-bg-secondary);
+    --stardust-gray: var(--color-bg-tertiary);
+
+    --celestial-gold: var(--color-accent-primary);
+    --radiant-gold: var(--color-accent-hover);
+    --ancient-gold: var(--color-accent-active);
+
+    --nebula-red: var(--color-terracotta);
+    --blood-red: var(--color-terracotta-soft);
+
+    --text-divine: var(--color-text-primary);
+    --text-scholar: var(--color-text-secondary);
+    --text-muted: var(--color-text-muted);
+
+    /*
+      Dynamic accent compatibility.
+
+      If the existing Settings system sets:
+      --accent-color
+      --house-color
+      --glow-color
+      --text-theme
+
+      those values will continue to work.
+
+      If they are not supplied, the premium brass/olive system
+      becomes the fallback.
+    */
+
+    --accent-color: var(--color-accent-primary);
+    --house-color: var(--color-olive);
+    --glow-color: rgba(184, 155, 94, 0.16);
+    --text-theme: var(--color-text-primary);
   }
 
-  /* Glassmorphism - The "Ethereal Glass" */
-  .glass-panel {
-    background: rgba(20, 31, 31, 0.4);
-    /* Subtle teal-tinted dark */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(212, 175, 55, 0.1);
+
+  /* =======================================================
+     LIGHT MODE
+     ======================================================= */
+
+  /*
+    Supports common theme architectures.
+
+    If your application already uses one of these selectors,
+    the palette will work without requiring component changes.
+  */
+
+  :root[data-theme="light"],
+  html[data-theme="light"],
+  body[data-theme="light"],
+  .light {
+
+    --color-bg-primary: #F3F0E8;
+    --color-bg-secondary: #EAE6DC;
+    --color-bg-tertiary: #DED9CD;
+
+    --color-surface-primary: #F8F6F0;
+    --color-surface-secondary: #EFEBE1;
+    --color-surface-elevated: #FFFFFF;
+
+    --color-border-subtle: rgba(38, 42, 35, 0.08);
+    --color-border-default: rgba(38, 42, 35, 0.14);
+    --color-border-strong: rgba(38, 42, 35, 0.22);
+    --color-border-active: rgba(128, 106, 61, 0.42);
+
+    --color-text-primary: #252822;
+    --color-text-secondary: #55594F;
+    --color-text-muted: #77796F;
+    --color-text-disabled: #9A9B94;
+
+    --color-accent-primary: #806A3D;
+    --color-accent-hover: #6E5A32;
+    --color-accent-active: #5E4D2C;
+    --color-accent-muted: rgba(128, 106, 61, 0.12);
+
+    --color-olive: #68745E;
+    --color-olive-soft: #7F8B73;
+    --color-olive-muted: rgba(104, 116, 94, 0.12);
+
+    --color-terracotta: #A96757;
+    --color-terracotta-soft: #B97A68;
+    --color-terracotta-muted: rgba(169, 103, 87, 0.12);
+
+    --color-brass: #806A3D;
+    --color-warm-slate: #69716D;
+    --color-warm-taupe: #81796A;
+    --color-dusty-blue: #718386;
+    --color-warm-sand: #A69A82;
+
+    --status-success: #687F60;
+    --status-warning: #9B7746;
+    --status-error: #995C54;
+    --status-info: #617A7A;
+
+    --shadow-sm:
+      0 2px 8px rgba(48, 45, 38, 0.08);
+
+    --shadow-md:
+      0 8px 24px rgba(48, 45, 38, 0.10);
+
+    --shadow-lg:
+      0 16px 42px rgba(48, 45, 38, 0.13);
+
+    --shadow-xl:
+      0 26px 70px rgba(48, 45, 38, 0.16);
+
+    --shadow-inset:
+      inset 0 1px 0 rgba(255, 255, 255, 0.70);
+
+    --ambient-light:
+      radial-gradient(circle at 50% -10%,
+        rgba(128, 106, 61, 0.055),
+        transparent 42%);
+
+    /*
+      Compatibility aliases are intentionally remapped.
+    */
+
+    --void-black: var(--color-bg-primary);
+    --deep-space: var(--color-bg-secondary);
+    --stardust-gray: var(--color-bg-tertiary);
+
+    --celestial-gold: var(--color-accent-primary);
+    --radiant-gold: var(--color-accent-hover);
+    --ancient-gold: var(--color-accent-active);
+
+    --nebula-red: var(--color-terracotta);
+    --blood-red: var(--color-terracotta-soft);
+
+    --text-divine: var(--color-text-primary);
+    --text-scholar: var(--color-text-secondary);
+    --text-muted: var(--color-text-muted);
+
+    --accent-color: var(--color-accent-primary);
+    --house-color: var(--color-olive);
+    --glow-color: rgba(128, 106, 61, 0.12);
+    --text-theme: var(--color-text-primary);
   }
 
-  .glass-panel-heavy {
-    background: rgba(14, 14, 14, 0.7);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+
+  /* =======================================================
+     BACKGROUND / WORKSPACE
+     ======================================================= */
+
+  body {
+    background-image:
+      var(--ambient-light);
   }
 
-  /* Interactive Glows */
-  .glow-gold {
-    text-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--glow-color);
-  }
 
-  .glow-red {
-    text-shadow: 0 0 15px var(--house-color), 0 0 30px var(--glow-color);
-  }
+  /*
+    Premium technical workspace.
 
-  .box-glow-gold {
-    box-shadow: 0 0 20px var(--glow-color);
-  }
+    This replaces the old celestial/starfield visual language
+    with a restrained engineering-grid environment.
+  */
 
-  .box-glow-gold:hover {
-    box-shadow: 0 0 40px var(--accent-color);
-  }
-
-  /* Archive Card */
-  .archive-card {
-    background: rgba(14, 14, 14, 0.6);
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .archive-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-        transparent,
-        rgba(212, 175, 55, 0.05),
-        transparent);
-    transition: 0.5s;
-  }
-
-  .archive-card:hover::before {
-    left: 100%;
-  }
-
-  .archive-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--accent-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--glow-color);
-  }
-
-  /* Celestial Particles */
-  .gold-dust {
-    position: fixed;
-    width: 2px;
-    height: 2px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    pointer-events: none;
-    box-shadow: 0 0 10px var(--accent-color);
-    z-index: 1;
-    animation: celestial-drift 20s infinite linear;
-  }
-
-  @keyframes celestial-drift {
-    from {
-      transform: translateY(0) translateX(0) rotate(0deg);
-      opacity: 0;
-    }
-
-    10% {
-      opacity: 0.8;
-    }
-
-    90% {
-      opacity: 0.8;
-    }
-
-    to {
-      transform: translateY(-100vh) translateX(50px) rotate(360deg);
-      opacity: 0;
-    }
-  }
-
-  /* Background Starfield */
   .starfield-v2 {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000000 100%);
+
+    background-color: var(--color-bg-primary);
+
+    background-image:
+      linear-gradient(rgba(224, 214, 187, 0.025) 1px,
+        transparent 1px),
+      linear-gradient(90deg,
+        rgba(224, 214, 187, 0.025) 1px,
+        transparent 1px),
+      radial-gradient(circle at 50% 0%,
+        rgba(184, 155, 94, 0.045),
+        transparent 46%);
+
+    background-size:
+      56px 56px,
+      56px 56px,
+      100% 100%;
+
     z-index: -2;
+    pointer-events: none;
   }
+
+
+  /*
+    Kept for compatibility with existing markup.
+
+    It no longer renders stars.
+    Instead it provides extremely subtle workspace depth.
+  */
 
   .stars-v2 {
     position: absolute;
     inset: 0;
+
     background-image:
-      radial-gradient(1px 1px at 20% 30%, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 50% 70%, var(--accent-color), transparent),
-      radial-gradient(1px 1px at 80% 40%, #fff, transparent),
-      radial-gradient(2px 2px at 10% 10%, var(--accent-color), transparent),
-      radial-gradient(1px 1px at 90% 90%, #fff, transparent);
-    background-size: 300px 300px;
-    animation: twinkle-v2 10s infinite ease-in-out;
-    opacity: 0.3;
+      linear-gradient(90deg,
+        transparent 49.95%,
+        rgba(184, 155, 94, 0.018) 50%,
+        transparent 50.05%),
+      linear-gradient(transparent 49.95%,
+        rgba(184, 155, 94, 0.018) 50%,
+        transparent 50.05%);
+
+    background-size: 160px 160px;
+
+    opacity: 0.28;
+    pointer-events: none;
+
+    animation: workspace-breathe 16s ease-in-out infinite;
   }
 
-  @keyframes twinkle-v2 {
+  @keyframes workspace-breathe {
 
     0%,
     100% {
-      opacity: 0.2;
-      transform: scale(1);
+      opacity: 0.18;
     }
 
     50% {
-      opacity: 0.5;
-      transform: scale(1.05);
+      opacity: 0.32;
     }
   }
 
-  /* Magical Text Reveal */
+
+  /* =======================================================
+     SURFACE SYSTEM
+     ======================================================= */
+
+  .glass-panel {
+
+    background:
+      linear-gradient(145deg,
+        rgba(37, 42, 36, 0.78),
+        rgba(29, 33, 29, 0.88));
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid var(--color-border-default);
+
+    box-shadow:
+      var(--shadow-md),
+      var(--shadow-inset);
+
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+
+  .glass-panel-heavy {
+
+    background:
+      linear-gradient(145deg,
+        rgba(32, 36, 31, 0.96),
+        rgba(23, 26, 23, 0.98));
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid var(--color-border-strong);
+
+    box-shadow:
+      var(--shadow-lg),
+      var(--shadow-inset);
+  }
+
+
+  /*
+    Optional semantic surface classes.
+    These can be used by future components without
+    changing the existing architecture.
+  */
+
+  .surface-primary {
+    background: var(--color-surface-primary);
+    border: 1px solid var(--color-border-default);
+  }
+
+  .surface-secondary {
+    background: var(--color-surface-secondary);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .surface-elevated {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border-default);
+    box-shadow: var(--shadow-md);
+  }
+
+
+  /* =======================================================
+     INTERACTIVE ACCENTS
+     ======================================================= */
+
+  /*
+    The old implementation used aggressive neon-style
+    text shadows.
+
+    These are deliberately reduced to premium emphasis.
+  */
+
+  .glow-gold {
+    text-shadow:
+      0 1px 12px rgba(184, 155, 94, 0.16);
+  }
+
+  .glow-red {
+    text-shadow:
+      0 1px 12px rgba(169, 103, 87, 0.14);
+  }
+
+  .box-glow-gold {
+    box-shadow:
+      var(--shadow-md);
+  }
+
+  .box-glow-gold:hover {
+    box-shadow:
+      var(--shadow-lg),
+      0 0 0 1px var(--color-border-active);
+  }
+
+
+  /* =======================================================
+     ARCHIVE / PROJECT CARDS
+     ======================================================= */
+
+  .archive-card {
+
+    background:
+      linear-gradient(145deg,
+        rgba(37, 42, 36, 0.72),
+        rgba(29, 33, 29, 0.88));
+
+    border: 1px solid var(--color-border-default);
+
+    transition:
+      transform 0.28s cubic-bezier(0.23, 1, 0.32, 1),
+      border-color 0.28s ease,
+      background-color 0.28s ease,
+      box-shadow 0.28s ease;
+
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+      var(--shadow-sm);
+  }
+
+
+  /*
+    Editorial accent line rather than a glowing sweep.
+  */
+
+  .archive-card::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 0;
+
+    background:
+      var(--accent-color);
+
+    opacity: 0.85;
+
+    transition:
+      height 0.28s ease;
+  }
+
+
+  .archive-card:hover::before {
+    height: 100%;
+  }
+
+
+  .archive-card:hover {
+
+    transform:
+      translateY(-3px);
+
+    border-color:
+      var(--color-border-active);
+
+    background:
+      linear-gradient(145deg,
+        rgba(43, 48, 41, 0.86),
+        rgba(32, 36, 31, 0.94));
+
+    box-shadow:
+      var(--shadow-lg);
+  }
+
+
+  /* =======================================================
+     AMBIENT PARTICLES
+     ======================================================= */
+
+  /*
+    Existing class retained for compatibility.
+
+    Particles are intentionally tiny and subdued.
+  */
+
+  .gold-dust {
+
+    position: fixed;
+
+    width: 1px;
+    height: 1px;
+
+    background:
+      var(--accent-color);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    box-shadow:
+      0 0 4px rgba(184, 155, 94, 0.22);
+
+    z-index: 1;
+
+    animation:
+      ambient-drift 28s infinite linear;
+
+    opacity: 0.28;
+  }
+
+
+  @keyframes ambient-drift {
+
+    from {
+      transform:
+        translateY(0) translateX(0);
+      opacity: 0;
+    }
+
+    12% {
+      opacity: 0.28;
+    }
+
+    88% {
+      opacity: 0.28;
+    }
+
+    to {
+      transform:
+        translateY(-100vh) translateX(24px);
+      opacity: 0;
+    }
+  }
+
+
+  /* =======================================================
+     TYPOGRAPHY
+     ======================================================= */
+
   .text-reveal {
-    background: linear-gradient(to right, var(--accent-color), var(--text-theme));
+
+    background:
+      linear-gradient(90deg,
+        var(--accent-color),
+        var(--text-theme));
+
     background-clip: text;
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: shine 5s linear infinite;
+
+    background-size: 180% auto;
+
+    animation:
+      subtle-text-shift 9s ease-in-out infinite;
   }
 
-  @keyframes shine {
-    to {
-      background-position: 200% center;
+
+  @keyframes subtle-text-shift {
+
+    0%,
+    100% {
+      background-position: 0% center;
+    }
+
+    50% {
+      background-position: 100% center;
     }
   }
 
-  /* Floating Animation */
+
+  /* =======================================================
+     FLOATING
+     ======================================================= */
+
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation:
+      float 8s ease-in-out infinite;
   }
+
 
   @keyframes float {
 
     0%,
     100% {
-      transform: translateY(0);
+      transform:
+        translateY(0);
     }
 
     50% {
-      transform: translateY(-20px);
+      transform:
+        translateY(-8px);
     }
   }
 
-  /* Gilded Shimmer */
+
+  /* =======================================================
+     SHIMMER
+     ======================================================= */
+
+  /*
+    Kept for existing components, but dramatically reduced.
+  */
+
   .animate-shimmer {
-    background: linear-gradient(90deg,
+
+    background:
+      linear-gradient(90deg,
         transparent 0%,
-        rgba(212, 175, 55, 0.2) 50%,
+        rgba(184, 155, 94, 0.055) 50%,
         transparent 100%);
-    background-size: 200% 100%;
-    animation: shimmer 3s infinite linear;
+
+    background-size:
+      200% 100%;
+
+    animation:
+      shimmer 5s infinite linear;
   }
 
+
   @keyframes shimmer {
+
     0% {
-      background-position: -200% 0;
+      background-position:
+        -200% 0;
     }
 
     100% {
-      background-position: 200% 0;
+      background-position:
+        200% 0;
     }
   }
 
-  /* Pulse Glow */
+
+  /* =======================================================
+     PULSE
+     ======================================================= */
+
+  /*
+    Converted from a strong neon glow into a quiet status
+    indicator animation.
+  */
+
   .animate-pulse-glow {
-    animation: pulse-glow 3s infinite ease-in-out;
+    animation:
+      pulse-glow 4s infinite ease-in-out;
   }
+
 
   @keyframes pulse-glow {
 
     0%,
     100% {
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow:
+        0 0 0 0 transparent;
     }
 
     50% {
-      box-shadow: 0 0 30px var(--accent-color);
+      box-shadow:
+        0 0 0 3px rgba(184, 155, 94, 0.055);
     }
   }
 
-  /* Spin Slow */
+
+  /* =======================================================
+     SPIN
+     ======================================================= */
+
   .animate-spin-slow {
-    animation: spin 12s linear infinite;
+    animation:
+      spin 14s linear infinite;
   }
 
+
   @keyframes spin {
+
     from {
-      transform: rotate(0deg);
+      transform:
+        rotate(0deg);
     }
 
     to {
-      transform: rotate(360deg);
+      transform:
+        rotate(360deg);
     }
   }
 
-  /* Shake */
+
+  /* =======================================================
+     SHAKE
+     ======================================================= */
+
   .animate-shake {
-    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+    animation:
+      shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
   }
+
 
   @keyframes shake {
 
     10%,
     90% {
-      transform: translate3d(-1px, 0, 0);
+      transform:
+        translate3d(-1px, 0, 0);
     }
 
     20%,
     80% {
-      transform: translate3d(2px, 0, 0);
+      transform:
+        translate3d(2px, 0, 0);
     }
 
     30%,
     50%,
     70% {
-      transform: translate3d(-4px, 0, 0);
+      transform:
+        translate3d(-4px, 0, 0);
     }
 
     40%,
     60% {
-      transform: translate3d(4px, 0, 0);
+      transform:
+        translate3d(4px, 0, 0);
     }
   }
 
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
 
-  ::-webkit-scrollbar-track {
-    background: var(--void-black);
-  }
+  /* =======================================================
+     ORBIT
+     ======================================================= */
 
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, var(--house-color), var(--accent-color));
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-color);
-  }
-
-  /* Orbit Animation */
   @keyframes orbit {
-    from { transform: rotate(0deg) translateX(var(--radius, 160px)) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(var(--radius, 160px)) rotate(-360deg); }
+
+    from {
+      transform:
+        rotate(0deg) translateX(var(--radius, 160px)) rotate(0deg);
+    }
+
+    to {
+      transform:
+        rotate(360deg) translateX(var(--radius, 160px)) rotate(-360deg);
+    }
   }
+
 
   .animate-orbit {
-    animation: orbit 10s linear infinite;
+    animation:
+      orbit 14s linear infinite;
   }
 
-  /* Wiggle Animation */
+
+  /* =======================================================
+     WIGGLE
+     ======================================================= */
+
   @keyframes wiggle {
-    0%, 100% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
+
+    0%,
+    100% {
+      transform:
+        rotate(-2deg);
+    }
+
+    50% {
+      transform:
+        rotate(2deg);
+    }
   }
+
 
   .animate-wiggle {
-    animation: wiggle 4s ease-in-out infinite;
+    animation:
+      wiggle 5s ease-in-out infinite;
+  }
+
+
+  /* =======================================================
+     SCROLLBAR
+     ======================================================= */
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+
+  ::-webkit-scrollbar-track {
+
+    background:
+      var(--color-bg-secondary);
+  }
+
+
+  ::-webkit-scrollbar-thumb {
+
+    background:
+      var(--color-warm-slate);
+
+    border:
+      1px solid var(--color-bg-secondary);
+
+    border-radius:
+      6px;
+
+    transition:
+      background-color 0.2s ease;
+  }
+
+
+  ::-webkit-scrollbar-thumb:hover {
+
+    background:
+      var(--color-accent-primary);
+  }
+
+
+  /* Firefox */
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color:
+      var(--color-warm-slate) var(--color-bg-secondary);
+  }
+
+
+  /* =======================================================
+     APPLICATION / SYSTEM STATUS HELPERS
+     ======================================================= */
+
+  .status-success {
+    color: var(--status-success);
+  }
+
+  .status-warning {
+    color: var(--status-warning);
+  }
+
+  .status-error {
+    color: var(--status-error);
+  }
+
+  .status-info {
+    color: var(--status-info);
+  }
+
+
+  .bg-success {
+    background-color: var(--status-success);
+  }
+
+  .bg-warning {
+    background-color: var(--status-warning);
+  }
+
+  .bg-error {
+    background-color: var(--status-error);
+  }
+
+  .bg-info {
+    background-color: var(--status-info);
+  }
+
+
+  /* =======================================================
+     ACCESSIBILITY / FOCUS
+     ======================================================= */
+
+  :focus-visible {
+
+    outline:
+      2px solid var(--accent-color);
+
+    outline-offset:
+      3px;
+  }
+
+
+  /* =======================================================
+     REDUCED MOTION
+     ======================================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+      animation-duration:
+        0.01ms !important;
+
+      animation-iteration-count:
+        1 !important;
+
+      transition-duration:
+        0.01ms !important;
+
+      scroll-behavior:
+        auto !important;
+    }
+  }
+
+
+  /* =======================================================
+     RESPONSIVE REFINEMENT
+     ======================================================= */
+
+  @media (max-width: 768px) {
+
+    .archive-card:hover {
+      transform:
+        translateY(-2px);
+    }
+
+    .glass-panel {
+      backdrop-filter:
+        blur(8px);
+
+      -webkit-backdrop-filter:
+        blur(8px);
+    }
+
+    .starfield-v2 {
+      background-size:
+        42px 42px,
+        42px 42px,
+        100% 100%;
+    }
   }
 }

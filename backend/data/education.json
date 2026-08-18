@@ -1,0 +1,16 @@
+{
+    "institution": "Terna Engineering College",
+    "degree": "Bachelor of Engineering in Artificial Intelligence and Data Science",
+    "duration": "2023 - 2027",
+    "location": "Navi Mumbai, Maharashtra, India",
+    "status": "Active Student (Undergraduate)",
+    "focusArea": "Artificial Intelligence, Full Stack Web Architecture, Systems Design",
+    "coursework": [
+        "Data Structures & Algorithms",
+        "Object-Oriented Programming (Java)",
+        "Database Management Systems (SQL & MongoDB)",
+        "Artificial Intelligence & Machine Learning",
+        "Software Engineering & Agile Methodologies",
+        "Computer Networks & Web Security"
+    ]
+}

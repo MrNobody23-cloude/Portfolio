@@ -1,30 +1,44 @@
 {
     "personalInfo": {
         "name": "Aaryan Patel",
-        "title": "Software Engineer",
-        "description": "I'm a Software Engineer navigating through the vast cosmos of technology. My mission is to build stellar applications that transcend dimensions.",
-        "experience": "Student"
-    },
-    "stats": {
-        "projects": 10,
-        "satisfaction": 100,
-        "experience": "Student"
-    },
-    "passions": [
-        {
-            "label": "Problem Solving",
-            "icon": "Brain",
-            "color": "text-purple-400"
+        "title": "Full Stack Engineer & Computer Engineering Student",
+        "status": "Available for Select Opportunities",
+        "location": "Navi Mumbai, India",
+        "email": "aaryanpatel080@gmail.com",
+        "tagline": "Building software systems at the intersection of AI, Web Architecture, and Scalable Backend Engineering.",
+        "avatar": "/AaryanImage.jpg",
+        "socialLinks": {
+            "github": "https://github.com/MrNobody23-cloude",
+            "leetcode": "https://leetcode.com/u/6iTydmEn4X/",
+            "linkedin": "https://www.linkedin.com/in/aaryan-patel-9869962a2/"
         },
-        {
-            "label": "Clean Code",
-            "icon": "Heart",
-            "color": "text-pink-400"
+        "education": {
+            "institution": "Terna Engineering College",
+            "degree": "Bachelor of Engineering in Computer Engineering",
+            "duration": "2023 - 2027",
+            "location": "Navi Mumbai"
         },
-        {
-            "label": "Continuous Learning",
-            "icon": "Coffee",
-            "color": "text-amber-400"
-        }
-    ]
+        "passions": [
+            {
+                "label": "Full Stack Architecture",
+                "icon": "Code2",
+                "color": "text-blue-400"
+            },
+            {
+                "label": "AI & Machine Learning",
+                "icon": "Brain",
+                "color": "text-purple-400"
+            },
+            {
+                "label": "System Design",
+                "icon": "Layers",
+                "color": "text-emerald-400"
+            },
+            {
+                "label": "Competitive Coding",
+                "icon": "Trophy",
+                "color": "text-amber-400"
+            }
+        ]
+    }
 }

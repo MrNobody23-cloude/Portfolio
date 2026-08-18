@@ -1,86 +1,137 @@
 [
     {
-        "name": "React",
-        "level": 75,
-        "category": "frontend",
+        "category": "Languages",
         "icon": "Code2",
-        "color": "from-cyan-500 to-blue-500"
+        "skills": [
+            {
+                "name": "JavaScript (ES6+)",
+                "level": 90,
+                "exp": "3+ years • Production Web Apps"
+            },
+            {
+                "name": "TypeScript",
+                "level": 85,
+                "exp": "2+ years • Type-Safe Frontends & APIs"
+            },
+            {
+                "name": "Python",
+                "level": 85,
+                "exp": "2+ years • AI/ML & Data Pipelines"
+            },
+            {
+                "name": "C / C++",
+                "level": 80,
+                "exp": "3+ years • Data Structures & Competitive Coding"
+            },
+            {
+                "name": "SQL / HTML / CSS",
+                "level": 90,
+                "exp": "3+ years • Relational DBs & Responsive Styling"
+            }
+        ]
     },
     {
-        "name": "Node.js",
-        "level": 85,
-        "category": "backend",
-        "icon": "Database",
-        "color": "from-green-500 to-emerald-500"
+        "category": "Frontend Frameworks",
+        "icon": "Layout",
+        "skills": [
+            {
+                "name": "React.js",
+                "level": 90,
+                "exp": "Component Architecture, Hooks, Context, Router"
+            },
+            {
+                "name": "Vite & Next.js",
+                "level": 85,
+                "exp": "Modern SPA Bundling & Server-Side Rendering"
+            },
+            {
+                "name": "Tailwind CSS",
+                "level": 92,
+                "exp": "Design Systems, Glassmorphism, Responsive UI"
+            },
+            {
+                "name": "Redux / Context API",
+                "level": 85,
+                "exp": "Global State Management & Persistent Stores"
+            }
+        ]
     },
     {
-        "name": "JavaScript/TypeScript",
-        "level": 70,
-        "category": "frontend",
-        "icon": "Code2",
-        "color": "from-yellow-500 to-orange-500"
+        "category": "Backend & Databases",
+        "icon": "Server",
+        "skills": [
+            {
+                "name": "Node.js & Express.js",
+                "level": 88,
+                "exp": "RESTful Microservices, Middleware & Auth"
+            },
+            {
+                "name": "MongoDB & Mongoose",
+                "level": 85,
+                "exp": "NoSQL Schema Modeling, Aggregations & Indexing"
+            },
+            {
+                "name": "PostgreSQL & SQL",
+                "level": 80,
+                "exp": "Relational Tables, Joins & Query Tuning"
+            },
+            {
+                "name": "REST API Architecture",
+                "level": 90,
+                "exp": "OpenAPI, JSON Contracts & Security"
+            }
+        ]
     },
     {
-        "name": "MongoDB",
-        "level": 88,
-        "category": "backend",
-        "icon": "Database",
-        "color": "from-green-600 to-green-400"
+        "category": "AI / Machine Learning",
+        "icon": "Brain",
+        "skills": [
+            {
+                "name": "LangChain & RAG",
+                "level": 82,
+                "exp": "LLM Integration, Vector Embeddings, Document Q&A"
+            },
+            {
+                "name": "Scikit-Learn & Pandas",
+                "level": 80,
+                "exp": "Feature Engineering, Classification & Regression"
+            },
+            {
+                "name": "Matplotlib & Seaborn",
+                "level": 78,
+                "exp": "Data Visualization & Telemetry Analytics"
+            },
+            {
+                "name": "OpenAI & Gemini APIs",
+                "level": 85,
+                "exp": "Prompt Engineering & Function Calling"
+            }
+        ]
     },
     {
-        "name": "Express.js",
-        "level": 85,
-        "category": "backend",
-        "icon": "Database",
-        "color": "from-gray-600 to-gray-400"
-    },
-    {
-        "name": "REST APIs",
-        "level": 70,
-        "category": "backend",
-        "icon": "Globe",
-        "color": "from-purple-500 to-pink-500"
-    },
-    {
-        "name": "Git & GitHub",
-        "level": 80,
-        "category": "tools",
+        "category": "DevOps & Tooling",
         "icon": "Zap",
-        "color": "from-orange-500 to-red-500"
-    },
-    {
-        "name": "Problem Solving",
-        "level": 90,
-        "category": "other",
-        "icon": "Target",
-        "color": "from-purple-600 to-violet-500"
-    },
-    {
-        "name": "Team Leadership",
-        "level": 90,
-        "category": "other",
-        "icon": "Trophy",
-        "color": "from-amber-500 to-yellow-400"
-    },
-    {
-        "name": "Pandas",
-        "level": 75,
-        "category": "M.L.",
-        "icon": "Globe",
-        "color": "from-purple-500 to-pink-500"
-    },
-    {
-        "name": "Scikit-learn",
-        "level": 85,
-        "category": "M.L.",
-        "icon": "Zap",
-        "color": "from-purple-500 to-pink-500"
-    },
-    {
-        "name": "Matplotlib",
-        "level": 60,
-        "category": "M.L.",
-        "icon": "Code2",
-        "color": "from-purple-500 to-pink-500"
+        "skills": [
+            {
+                "name": "Git & GitHub",
+                "level": 90,
+                "exp": "Branching, Pull Requests, Code Review & Actions"
+            },
+            {
+                "name": "Postman & API Testing",
+                "level": 88,
+                "exp": "Endpoint Validation & Automated Collections"
+            },
+            {
+                "name": "Firebase & Vercel",
+                "level": 85,
+                "exp": "Cloud Hosting, Authentication & Deployment"
+            },
+            {
+                "name": "Linux & Bash Shell",
+                "level": 80,
+                "exp": "Terminal Operations, Scripting & Server Ops"
+            }
+        ]
     }
 ]

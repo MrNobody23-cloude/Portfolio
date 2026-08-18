@@ -75,7 +75,7 @@ async function fetchLeetCodeStats(username) {
         const hard = submissions.find(s => s.difficulty === 'Hard')?.count || 0;
 
         return {
-            problems: `${totalSolved}+`,
+            problems: `${totalSolved - 1}+`,
             ranking: user.profile?.ranking ? `#${user.profile.ranking.toLocaleString()}` : 'N/A',
             solved: `${easy}E/${medium}M/${hard}H`
         };
