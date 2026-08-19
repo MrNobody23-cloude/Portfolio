@@ -5,18 +5,13 @@
         "skills": [
             {
                 "name": "Java",
-                "level": 80,
+                "level": 90,
                 "exp": "3+ years • Data Structures & Competitive Coding"
             },
             {
                 "name": "JavaScript (ES6+)",
-                "level": 90,
+                "level": 80,
                 "exp": "3+ years • Production Web Apps"
-            },
-            {
-                "name": "TypeScript",
-                "level": 85,
-                "exp": "2+ years • Type-Safe Frontends & APIs"
             },
             {
                 "name": "Python",
@@ -24,8 +19,13 @@
                 "exp": "2+ years • AI/ML & Data Pipelines"
             },
             {
+                "name": "TypeScript",
+                "level": 75,
+                "exp": "2+ years • Type-Safe Frontends & APIs"
+            },
+            {
                 "name": "SQL / HTML / CSS",
-                "level": 90,
+                "level": 80,
                 "exp": "3+ years • Relational DBs & Responsive Styling"
             }
         ]
