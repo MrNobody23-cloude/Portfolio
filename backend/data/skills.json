@@ -4,6 +4,11 @@
         "icon": "Code2",
         "skills": [
             {
+                "name": "Java",
+                "level": 80,
+                "exp": "3+ years • Data Structures & Competitive Coding"
+            },
+            {
                 "name": "JavaScript (ES6+)",
                 "level": 90,
                 "exp": "3+ years • Production Web Apps"
@@ -15,13 +20,8 @@
             },
             {
                 "name": "Python",
-                "level": 85,
-                "exp": "2+ years • AI/ML & Data Pipelines"
-            },
-            {
-                "name": "C / C++",
                 "level": 80,
-                "exp": "3+ years • Data Structures & Competitive Coding"
+                "exp": "2+ years • AI/ML & Data Pipelines"
             },
             {
                 "name": "SQL / HTML / CSS",
@@ -114,12 +114,12 @@
         "skills": [
             {
                 "name": "Git & GitHub",
-                "level": 90,
+                "level": 80,
                 "exp": "Branching, Pull Requests, Code Review & Actions"
             },
             {
                 "name": "Postman & API Testing",
-                "level": 88,
+                "level": 80,
                 "exp": "Endpoint Validation & Automated Collections"
             },
             {
@@ -129,8 +129,13 @@
             },
             {
                 "name": "Linux & Bash Shell",
-                "level": 80,
+                "level": 50,
                 "exp": "Terminal Operations, Scripting & Server Ops"
+            },
+            {
+                "name": "Docker & Kubernetes",
+                "level": 70,
+                "exp": "Containerization & Orchestration"
             }
         ]
     }
