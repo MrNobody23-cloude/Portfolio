@@ -1,11 +1,11 @@
 {
     "personalInfo": {
         "name": "Aaryan Patel",
-        "title": "Full Stack Engineer & Computer Engineering Student",
+        "title": "Passionate Software Engineer",
         "status": "Available for Select Opportunities",
-        "location": "Navi Mumbai, India",
+        "location": "Dombivli, Thane, Maharashtra, India",
         "email": "aaryanpatel080@gmail.com",
-        "tagline": "Building software systems at the intersection of AI, Web Architecture, and Scalable Backend Engineering.",
+        "tagline": "Passionate about building software systems at the intersection of AI, Web Architecture, and Scalable Backend Engineering.",
         "avatar": "/AaryanImage.jpg",
         "socialLinks": {
             "github": "https://github.com/MrNobody23-cloude",
@@ -14,7 +14,7 @@
         },
         "education": {
             "institution": "Terna Engineering College",
-            "degree": "Bachelor of Engineering in Computer Engineering",
+            "degree": "Bachelor of Engineering in Artificial Intelligence and Data Science",
             "duration": "2023 - 2027",
             "location": "Navi Mumbai"
         },
@@ -35,7 +35,7 @@
                 "color": "text-emerald-400"
             },
             {
-                "label": "Competitive Coding",
+                "label": "Data Structures and Algorithms",
                 "icon": "Trophy",
                 "color": "text-amber-400"
             }

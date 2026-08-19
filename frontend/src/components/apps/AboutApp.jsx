@@ -3,6 +3,7 @@ import { portfolioAPI } from '../../services/api';
 import SystemStatusWrapper from '../ui/SystemStatusWrapper';
 import { DynamicIcon } from '../../utils/iconMap';
 import { Terminal, MapPin, Mail, ExternalLink, ShieldCheck, Award } from 'lucide-react';
+import AaryanImage from '../../MyInfo/AaryanImage.jpg';
 
 export default function AboutApp() {
     const [profile, setProfile] = useState(null);
@@ -61,7 +62,7 @@ export default function AboutApp() {
                     <div className="relative group">
                         <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-slate-700 bg-slate-800 shadow-xl group-hover:border-[var(--accent-primary)] transition-all">
                             <img
-                                src={info.avatar || 'https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=300'}
+                                src={info.avatar || AaryanImage}
                                 alt={info.name || 'Aaryan Patel'}
                                 className="w-full h-full object-cover"
                             />
@@ -80,7 +81,7 @@ export default function AboutApp() {
 
                             <div className="flex items-center justify-center md:justify-start space-x-2 text-xs text-slate-400 font-mono">
                                 <MapPin className="w-3.5 h-3.5 text-slate-500" />
-                                <span>{info.location || 'Navi Mumbai, India'}</span>
+                                <span>{info.location || 'DombivliThane, Mumbai, India'}</span>
                             </div>
                         </div>
 
