@@ -48,12 +48,12 @@ export default function ContactApp() {
                 <div className="space-y-3 md:col-span-1">
                     <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
                         <h3 className="text-xs font-bold font-mono text-slate-400 uppercase tracking-wider">Direct Email</h3>
-                        <p className="text-xs font-semibold text-slate-200">aaryanpatel.dev@gmail.com</p>
+                        <p className="text-xs font-semibold text-slate-200">aaryanpatel080@gmail.com</p>
                     </div>
 
                     <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
                         <h3 className="text-xs font-bold font-mono text-slate-400 uppercase tracking-wider">Location</h3>
-                        <p className="text-xs font-semibold text-slate-200">Navi Mumbai, Maharashtra, India</p>
+                        <p className="text-xs font-semibold text-slate-200">Dombivli, Thane, Maharashtra, India</p>
                     </div>
 
                     <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
@@ -69,7 +69,7 @@ export default function ContactApp() {
                                 <Github className="w-4 h-4" />
                             </a>
                             <a
-                                href="https://www.linkedin.com/in/aaryan-patel-dev"
+                                href="https://www.linkedin.com/in/aaryan-patel-9869962a2/"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white transition-colors"
