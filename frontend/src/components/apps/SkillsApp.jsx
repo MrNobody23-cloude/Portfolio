@@ -73,18 +73,6 @@ export default function SkillsApp() {
                                     >
                                         <div className="flex items-center justify-between text-xs">
                                             <span className="font-semibold text-slate-100">{skill.name}</span>
-                                            <span className="font-mono text-slate-400 font-bold text-[11px]">{skill.level}%</span>
-                                        </div>
-
-                                        {/* Progress Bar */}
-                                        <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-slate-800">
-                                            <div
-                                                className="h-full rounded-full transition-all duration-500"
-                                                style={{
-                                                    width: `${skill.level}%`,
-                                                    backgroundColor: 'var(--accent-primary)'
-                                                }}
-                                            ></div>
                                         </div>
 
                                         {skill.exp && (

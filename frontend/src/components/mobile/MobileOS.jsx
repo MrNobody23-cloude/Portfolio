@@ -20,7 +20,7 @@ import { Wifi, Battery, X, Home, Terminal, FileText, User } from 'lucide-react';
 
 export default function MobileOS() {
     const { accentColor } = useOS();
-    const [activeMobileApp, setActiveMobileApp] = useState('about'); // Default open About on mobile
+    const [activeMobileApp, setActiveMobileApp] = useState(); // Default open About on mobile
     const [timeStr, setTimeStr] = useState('');
     const [profile, setProfile] = useState(null);
 
